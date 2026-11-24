@@ -1,0 +1,29 @@
+<!doctype html>
+<html lang="es"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Bloque 3 — Ensayo de bioestimulantes en algodón</title><link rel="stylesheet" href="visor.css"></head><body>
+<header><div class="block">Bloque <b>3</b></div><div><h1>Ensayo de bioestimulantes en algodón</h1><p>Gonzalez Leandro <span>·</span> Facultad de Ciencias Agrarias — UNNE</p></div></header>
+<main><section class="filters" aria-label="Filtrar plantas">
+<label>Tratamiento<select id="treatment"><option value="">Todos los tratamientos</option></select></label>
+<label>Suelo<select id="soil"><option value="">Ambos suelos</option></select></label>
+<label>Fila<select id="row"><option value="">Todas</option></select></label>
+<label>Columna<select id="column"><option value="">Todas</option></select></label>
+<label>Planta<select id="plant"><option value="">Todas las plantas</option></select></label>
+<button id="clear">Limpiar filtros</button></section>
+<div class="layout"><div class="left"><section class="panel"><div class="bar"><h2>Mesada experimental</h2><span id="visible"></span></div>
+<div id="presets" class="buttons presets" aria-label="Perspectiva"></div>
+<div class="stage"><canvas id="scene" aria-label="Mesada del bloque 3"></canvas><div id="empty" hidden>Sin plantas para esta combinación. Probá otra fila o tratamiento.</div></div>
+<div class="bar tools"><label><input type="checkbox" id="labels"> Identificadores</label><div class="buttons"><button id="minus" aria-label="Alejar">−</button><button id="plus" aria-label="Acercar">+</button><button id="reset">Restablecer vista</button></div></div>
+</section><details class="panel solar"><summary>Recorrido solar</summary><label for="sunDate">Fecha de referencia</label><select id="sunDate"><option value="2026-03-29">29 de marzo de 2026</option><option value="2026-03-26">26 de marzo de 2026</option></select>
+<label for="sunTime">Hora de Corrientes · <b id="clock"></b></label><input style="width:100%" id="sunTime" type="range" min="360" max="1230" value="1023" step="1">
+<div class="buttons"><button id="playSun">Reproducir día</button><button id="photoSun">Hora de la foto</button></div><output id="sunData" class="hint"></output>
+<p class="hint">De abajo hacia arriba en el mapa<br><i class="dot" style="background:#24764e"></i>Bloque 3 → <i class="dot" style="background:#2368aa"></i>Bloque 2 → <i class="dot" style="background:#b93840"></i>Bloque 1<br>3H1 → 3H10 · rumbo estimado N 12° E</p>
+<p class="hint">Sombras ilustrativas bajo media sombra. La ubicación solar se calcula para el pin de Corrientes.</p></details>
+<details class="panel solar"><summary>Distribución experimental</summary><div class="legend" id="legend"></div><p>A–D · Suelo pobre &nbsp; / &nbsp; E–H · Suelo rico</p><p>Fila H en el borde del eje X. Desde 3H1 hacia 3H10 se avanza hacia el bloque 2. Separación provisional de 55 cm entre centros.</p></details>
+</div><aside><section class="panel inspector"><h2 id="cardTitle">Datos de la selección</h2><div id="info" aria-live="polite"></div><div class="groupstats" id="groupstats"></div>
+<details class="analysis"><summary>ANOVA y Duncan · bloque 3 completo</summary><div id="inference"></div></details><button id="openReview">Revisar puntos de calibración</button></section>
+<section class="panel results"><div class="bar"><h2>Plantas del filtro</h2><span id="count"></span></div><div class="scroll"><table><thead><tr><th>Planta</th><th>Tratamiento</th><th>Altura</th></tr></thead><tbody id="records"></tbody></table></div></section></aside></div>
+<footer><span>Reconstrucción fotográfica 2.5D · Alturas en centímetros</span><output id="state"></output></footer></main><dialog id="dialog"><h2>Revisión sobre la fotografía original</h2><div class="row"><select id="rid" aria-label="Maceta en revisión"></select>
+<select id="point" aria-label="Punto activo"><option value="suelo">Línea real del sustrato</option><option value="nudo">Último nudo</option><option value="apoyo">Apoyo de la maceta</option></select><button id="detail">Ampliar punto</button><button id="whole">Foto completa</button></div>
+<p class="hint">Hacé clic para ubicar el punto seleccionado. La cruz marca la referencia actual. En las macetas con poco sustrato, buscá la inserción del tallo dentro del vaso. Si un punto está oculto, conservá su estado provisional.</p>
+<canvas id="review"></canvas><p id="reviewMsg" role="status"></p><div class="buttons"><button id="save">Confirmar los tres puntos</button><button id="export">Descargar correcciones</button><button id="close">Cerrar</button></div></dialog>
+<script src="escena.js"></script><script src="sol.js"></script><script src="analisis_alturas.js"></script><script src="visor.js"></script></body></html>
