@@ -1,0 +1,8 @@
+const ANALISIS_ALTURAS = `<h3>ANOVA del bloque completo</h3>
+<p>Modelo aditivo sobre ocho medias de fila. Una fila por combinación de tratamiento y suelo. Los tres grados de libertad residuales incluyen cualquier interacción.</p>
+<table><thead><tr><th>Fuente</th><th>GL</th><th>SC</th><th>CM</th><th>F</th><th>p</th></tr></thead><tbody><tr><td>Tratamiento</td><td>3</td><td>26,02</td><td>8,67</td><td>0,14</td><td>0,9276</td></tr><tr><td>Suelo</td><td>1</td><td>659,57</td><td>659,57</td><td>10,89</td><td>0,0457</td></tr><tr><td>Residual</td><td>3</td><td>181,72</td><td>60,57</td><td>—</td><td>—</td></tr></tbody></table>
+<h3>Duncan · α = 0,05</h3>
+<table><thead><tr><th>tratamiento</th><th>Media (cm)</th><th>Grupo</th></tr></thead><tbody><tr><td>Aminoácidos</td><td>78,73</td><td>a</td></tr><tr><td>Trichoderma</td><td>76,12</td><td>a</td></tr><tr><td>Hormonal</td><td>75,29</td><td>a</td></tr><tr><td>Testigo</td><td>73,75</td><td>a</td></tr></tbody></table>
+<table><thead><tr><th>suelo</th><th>Media (cm)</th><th>Grupo</th></tr></thead><tbody><tr><td>Rico</td><td>85,05</td><td>a</td></tr><tr><td>Pobre</td><td>66,89</td><td>b</td></tr></tbody></table>
+<p>Compará las letras dentro de cada tabla. Dos medias que comparten letra carecen de diferencia detectable con Duncan. Las medias de tratamiento promedian dos filas y las de suelo, cuatro.</p>
+<p>Interpretación exploratoria. El modelo supone filas independientes y efectos aditivos. La distribución espacial puede confundirse con los efectos, en especial el de suelo. La inferencia del ensayo requiere contrastar el diseño y la aleatorización con los tres bloques.</p>`;

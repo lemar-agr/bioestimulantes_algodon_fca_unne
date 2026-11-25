@@ -1,0 +1,21 @@
+#comparador{scroll-margin-top:16px}
+#cmpCards{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+#cmpCards article{padding:14px;background:#f6f9f7;border:1px solid #d5e2db;border-radius:10px;min-width:0}
+#cmpCards h3,#cmpMaps h3{margin:0 0 6px;color:#254d3a}
+#cmpCards p{margin:.5em 0}
+#cmpDelta{font-weight:650}
+#comparador details{border-top:1px solid #d5e2db;padding:14px 0}
+#comparador summary{font-weight:650;cursor:pointer}
+.cmpPhotos{display:grid;grid-template-columns:1fr 1fr;gap:6px}
+.cmpPhotos figure{margin:0;min-width:0}
+.cmpPhotos img,.cmpPhotos canvas{width:100%;height:150px;object-fit:contain;background:#fff}
+.cmpPhotos figcaption{font-size:.78rem;color:#385849;margin:8px 0}
+#cmpPlot{width:100%;max-height:380px;display:block;background:white}
+#cmpPlot circle{cursor:pointer}
+#cmpPlot circle:focus{stroke:#141a16;stroke-width:3px}
+#cmpMaps section{margin:14px 0}
+.cmpGrid{display:grid;grid-template-columns:20px repeat(10,minmax(0,1fr));gap:2px;text-align:center;align-items:center}
+.cmpGrid button{padding:5px 0;font-size:clamp(9px,1.15vw,14px);min-width:0;border:0}
+#cmpScale{align-self:center;font-size:.86rem}
+#cmpStatus{display:block}
+@media(max-width:700px){#cmpCards{grid-template-columns:1fr}.cmpPhotos img,.cmpPhotos canvas{height:155px}.cmpGrid{grid-template-columns:12px repeat(10,minmax(0,1fr))}}
