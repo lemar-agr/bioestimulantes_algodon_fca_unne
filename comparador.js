@@ -4,12 +4,12 @@ const comparePanel=document.createElement("section");
 comparePanel.id="comparador";
 comparePanel.className="panel";
 comparePanel.innerHTML=`<div class="bar"><h2>Comparador del ensayo</h2><button id="cmpExport">Descargar lámina PNG · 4K</button></div>
-<p id="cmpScope" class="hint"></p><div class="leaf-nav"><label>Comparar por<select id="cmpMode"><option value="id">Maceta</option><option value="tratamiento">Tratamiento</option><option value="sueloTipo">Tipo de suelo</option><option value="cruce">Tratamiento × suelo</option></select></label><label>Selección A<select id="cmpA"></select></label><label>Selección B<select id="cmpB"></select></label></div>
+<p id="cmpScope" class="hint"></p><div class="leaf-nav"><label>Comparar por<select id="cmpMode"><option value="id">Maceta</option><option value="cruce">Tratamiento dentro de cada suelo</option></select></label><label>Selección A<select id="cmpA"></select></label><label>Selección B<select id="cmpB"></select></label></div>
 <div id="cmpCards"></div><p id="cmpDelta"></p><output id="cmpStatus"></output>
-<details open><summary>Medias por tratamiento y por suelo</summary><div id="cmpMeans" class="scroll"></div></details>
+<details open><summary>Medias por tratamiento dentro de cada suelo</summary><label>Variable para las gráficas <select id="cmpVar"></select></label><div id="cmpBars"></div><div id="cmpMeans" class="scroll"></div><div id="cmpNormalPlot"></div></details>
 <details open><summary>Elegir por altura o área foliar</summary><div class="leaf-nav"><label>Ordenar por<select id="cmpOrder"><option value="alta">Mayor altura</option><option value="baja">Menor altura</option><option value="grande">Mayor área foliar</option><option value="chica">Menor área foliar</option></select></label><label>Plantas del filtro<select id="cmpRank"></select></label><label>Asignar al lado<select id="cmpSide"><option>A</option><option>B</option></select></label><button id="cmpUse">Usar planta</button></div></details>
-<details open><summary>Altura y área foliar por maceta</summary><p class="hint">Elegí un punto para ver la ficha y asignar la maceta al lado indicado.</p><svg id="cmpPlot" viewBox="0 0 640 305" aria-label="Altura según la fecha y área foliar total por maceta"></svg><div class="legend" id="cmpLegend"></div></details>
-<details open><summary>Variación sobre la mesada</summary><div class="leaf-nav"><label>Colorear por<select id="cmpMetric"><option value="altura">Altura (cm)</option><option value="area">Área foliar (cm²)</option></select></label><span id="cmpScale"></span></div><div id="cmpMaps"></div><p class="hint">A junto a las ventanas laterales · H junto al pasillo. Desde la puerta hacia las ventanas traseras, los bloques siguen el orden 3, 2 y 1.</p></details>`;
+<details open><summary>Relación con el área foliar por maceta</summary><label>Eje vertical <select id="cmpX"></select></label><p class="hint">Elegí un punto para ver la ficha y asignar la maceta al lado indicado.</p><div id="cmpPlot"></div><div class="legend" id="cmpLegend"></div></details>
+<details><summary>Distribución por suelo</summary><div id="cmpDistribucion"></div></details><details><summary>Variación sobre la mesada</summary><div class="leaf-nav"><label>Colorear por<select id="cmpMetric"><option value="altura">Altura (cm)</option><option value="area">Área foliar (cm²)</option></select></label><span id="cmpScale"></span></div><div id="cmpMaps"></div><p class="hint">A junto a las ventanas laterales · H junto al pasillo. Desde la puerta hacia las ventanas traseras, los bloques siguen el orden 3, 2 y 1.</p></details>`;
 cmp("area-foliar").before(comparePanel);
 const compareLink=document.createElement("a");compareLink.href="#comparador";compareLink.textContent="Comparador";document.querySelector(".portal-nav").append(compareLink);
 const codes={BIO1:"Hormonal",BIO2:"Trichoderma",BIO3:"Aminoácidos",TESTIGO:"Testigo"};
@@ -21,30 +21,53 @@ function opciones(el,values,old,backup){
  el.value=values.some(([key])=>key===old)?old:(backup||values[0]?.[0]||"");
 }
 function actualizarComparador(group){
- cmpData=group.map(d=>({...d,tratamiento:codes[d.tratamiento]||d.tratamiento,area:FOLIAR[d.id]?.total}));
+ cmpData=group.map(d=>({...d,tratamiento:codes[d.tratamiento]||d.tratamiento,peso:PRELIMINARES[d.id].hojas_g,area:FOLIAR[d.id]?.total}));
  const plant=cmp("plant").value;
  actualizarGrupos(plant&&plant!==ultimaMaceta?plant:null);
  ultimaMaceta=plant;
  cmp("cmpScope").textContent=alcance();
- const tables=["tratamiento","sueloTipo"].map(key=>{
-  const groups=new Map();
-  for(const d of cmpData){const k=d[key];if(!groups.has(k))groups.set(k,[]);groups.get(k).push(d)}
-  const body=[...groups].map(([name,ds])=>{
-   const h=resumen(ds,"altura"),a=resumen(ds,"area");
-   return "<tr>"+[name,h.n,cnum(h.media),cnum(h.de),a.n,cnum(a.media),cnum(a.de)].map(v=>"<td>"+v+"</td>").join("")+"</tr>";
-  }).join("");
-  return "<table><thead><tr><th>"+(key==="tratamiento"?"Tratamiento":"Suelo")+"</th><th colspan='3'>Altura (cm)</th><th colspan='3'>Área foliar (cm²)</th></tr><tr><th>Grupo</th><th>n</th><th>Media</th><th>DE</th><th>n</th><th>Media</th><th>DE</th></tr></thead><tbody>"+body+"</tbody></table>";
- });
- cmp("cmpMeans").innerHTML=tables.join("")+"<p class='hint'>DE muestral entre macetas. El área foliar corresponde a la medición de hojas de cada planta y se mantiene al cambiar la fecha de altura.</p>";
+ dibujarMedias();distribucionComparador();
  ordenarComparador();graficoComparador();mapaComparador();
 }
+const variablesGrupo={
+ altura:["Altura","cm",d=>d.altura],area:["Área foliar","cm²",d=>d.area],
+ peso:["Peso seco de hojas","g",d=>d.peso],raiz:["Volumen de raíces","mL",d=>PRELIMINARES[d.id].raiz_ml],
+ nudos:["Nudos totales","nudos",d=>PRELIMINARES[d.id].nudos],
+ pimpollos:["Pimpollos","pimpollos",d=>PRELIMINARES[d.id].eventos.reduce((n,e)=>n+e.pimpollos,0)],
+ flores:["Flores","flores",d=>PRELIMINARES[d.id].eventos.reduce((n,e)=>n+e.flores,0)],
+ afe:["Área foliar específica","cm²/g",d=>d.peso>0?PRELIMINARES[d.id].area_cm2/d.peso:null]
+};
+for(const [k,[nombre,unidad]] of Object.entries(variablesGrupo))cmp("cmpVar").add(new Option(nombre+" ("+unidad+")",k));
+for(const key of ["altura","peso","raiz","nudos","pimpollos","flores"]){
+ const [nombre,unidad]=variablesGrupo[key];
+ cmp("cmpX").add(new Option(nombre+" ("+unidad+")",key));
+}
+function dibujarMedias(){
+ const [nombre,unidad,valor]=variablesGrupo[cmp("cmpVar").value];
+ const paneles=["Pobre","Rico"].map(suelo=>{
+  const filas=Object.keys(palette).map(tr=>{
+   const ds=cmpData.filter(d=>d.tratamiento===tr&&d.sueloTipo===suelo);
+   return {tr,...resumen(ds.map(d=>({v:valor(d)})),"v")};
+  }).filter(f=>f.n);
+  return {suelo,filas};
+ }).filter(p=>p.filas.length);
+ const max=Math.max(1,...paneles.flatMap(p=>p.filas.map(f=>f.media)));
+ cmp("cmpBars").innerHTML=paneles.map(({suelo,filas})=>'<section><h3>Suelo '+suelo.toLowerCase()+'</h3><p>'+nombre+' · media en '+unidad+'</p>'+filas.map(f=>'<div class="mediaBar"><span>'+f.tr+'</span><i><b style="width:'+100*f.media/max+'%;background:'+palette[f.tr]+'"></b></i><strong>'+cnum(f.media)+'</strong></div>').join("")+'</section>').join("");
+ cmp("cmpMeans").innerHTML=paneles.map(({suelo,filas})=>'<table><caption>Suelo '+suelo.toLowerCase()+' · '+nombre+' ('+unidad+')</caption><thead><tr><th>Tratamiento</th><th>Macetas</th><th>Media</th><th>DE</th></tr></thead><tbody>'+filas.map(f=>'<tr><td>'+f.tr+'</td><td>'+f.n+'</td><td>'+cnum(f.media)+'</td><td>'+cnum(f.de)+'</td></tr>').join("")+'</tbody></table>').join("")+(paneles.length?'<p class="hint">Ambas gráficas parten de cero y comparten escala. DE muestral entre macetas del mismo suelo y tratamiento.</p>':'Sin datos para estos filtros.');
+ dibujarCurvasNormales();
+}
+function dibujarCurvasNormales(){
+ const variable={altura:"altura",area:"area",peso:"peso",raiz:"raiz",nudos:"nudos",pimpollos:"pimpollos",flores:"flores",afe:"areaEspecifica"}[cmp("cmpVar").value]||"altura";
+ renderCurvaAltura(cmp("cmpNormalPlot"),cmpData,{variableKey:variable,onSelect:p=>seleccionarComparada(p.id)});
+}
+cmp("cmpVar").onchange=()=>{dibujarMedias();distribucionComparador()};
 function alcance(){
  return ["block","treatment","soil","row","column","measurement"].map(k=>cmp(k).selectedOptions[0]?.textContent).filter(Boolean).join(" · ")+" · "+cmpData.length+" macetas";
 }
 function actualizarGrupos(id){
  const mode=cmp("cmpMode").value;cmpGroups=new Map();
  for(const d of cmpData){
-  const key=mode==="cruce"?d.tratamiento+" · "+d.sueloTipo:d[mode];
+  const key=mode==="cruce"?"Suelo "+d.sueloTipo.toLowerCase()+" · "+d.tratamiento:d[mode];
   if(!cmpGroups.has(key))cmpGroups.set(key,[]);
   cmpGroups.get(key).push(d);
  }
@@ -126,13 +149,46 @@ function seleccionarComparada(id){
  cmp("cmpMode").value="id";cmp("plant").value=id;ultimaMaceta="";refresh();
 }
 function graficoComparador(){
- const data=cmpData.filter(d=>Number.isFinite(d.altura)&&Number.isFinite(d.area));
- const svg=cmp("cmpPlot"),maxX=Math.max(1,...data.map(d=>d.altura))*1.05,maxY=Math.max(1,...data.map(d=>d.area))*1.05;
- let s='<g fill="#34594b" font-size="12"><text x="55" y="17">Área foliar total (cm²)</text><text x="318" y="299">Altura (cm)</text>';
- for(let i=0;i<=4;i++){const x=61+i*138,y=252-i*55;
- s+='<path d="M61 '+y+' H613 M'+x+' 32 V252" stroke="#dae5dd"/><text x="54" y="'+(y+4)+'" text-anchor="end">'+cnum(Math.round(i*maxY/4))+'</text><text x="'+x+'" y="273" text-anchor="middle">'+cnum(i*maxX/4)+'</text>';}
- svg.innerHTML=s+"</g>"+data.map(d=>'<circle tabindex="0" role="button" aria-label="'+d.id+' · '+cnum(d.altura)+' cm · '+cnum(d.area)+' cm²" data-id="'+d.id+'" cx="'+(61+552*d.altura/maxX)+'" cy="'+(252-220*d.area/maxY)+'" r="'+(d.id===cmp("plant").value?6:4.4)+'" fill="'+palette[d.tratamiento]+'" stroke="'+(d.id===cmp("plant").value?"black":"white")+'"><title>'+d.id+" · "+d.tratamiento+" · "+cnum(d.altura)+" cm · "+cnum(d.area)+" cm²</title></circle>").join("");
+ const [nombre,unidad,valor]=variablesGrupo[cmp("cmpX").value];
+ const data=cmpData.map(d=>({...d,y:valor(d)})).filter(d=>Number.isFinite(d.y)&&Number.isFinite(d.area));
+ const svg=cmp("cmpPlot"),maxX=Math.max(1,...data.map(d=>d.area))*1.05,maxY=Math.max(1,...data.map(d=>d.y))*1.05;
+ let s='<g fill="#34594b" font-size="14"><text x="62" y="19">'+nombre+' ('+unidad+')</text><text x="337" y="299" text-anchor="middle">Área foliar (cm²)</text>';
+ for(let i=0;i<=4;i++){
+  const x=61+i*138,y=252-i*55;
+  s+='<path d="M61 '+y+' H613 M'+x+' 32 V252" stroke="#dae5dd"/><text x="54" y="'+(y+4)+'" text-anchor="end">'+cnum(i*maxY/4)+'</text><text x="'+x+'" y="273" text-anchor="middle">'+cnum(Math.round(i*maxX/4))+'</text>';
+ }
+ svg.innerHTML=["Pobre","Rico"].filter(suelo=>data.some(d=>d.sueloTipo===suelo)).map(suelo=>{
+  const puntos=data.filter(d=>d.sueloTipo===suelo).map(d=>{
+   const etiqueta=d.id+" · "+d.tratamiento+" · "+cnum(d.area)+" cm² · "+cnum(d.y)+" "+unidad;
+   return '<circle tabindex="0" role="button" aria-label="'+etiqueta+'" data-id="'+d.id+'" cx="'+(61+552*d.area/maxX)+'" cy="'+(252-220*d.y/maxY)+'" r="'+(d.id===cmp("plant").value?6:4.4)+'" fill="'+palette[d.tratamiento]+'" stroke="white"><title>'+etiqueta+'</title></circle>';
+  }).join("");
+  return '<h3>Suelo '+suelo.toLowerCase()+'</h3><svg viewBox="0 0 640 305" aria-label="'+nombre+' y área foliar en suelo '+suelo.toLowerCase()+'">'+s+'</g>'+puntos+'</svg>';
+ }).join("");
  cmp("cmpLegend").innerHTML=[...new Set(data.map(d=>d.tratamiento))].map(t=>'<span><i class="dot" style="background:'+palette[t]+'"></i>'+t+'</span>').join("");
+}
+function distribucionComparador(){
+ const [nombre,unidad,valor]=variablesGrupo[cmp("cmpVar").value];
+ const valores=cmpData.map(valor).filter(Number.isFinite);
+ const paso=Math.max(...valores,1)/6;
+ const grupos=["Pobre","Rico"].map(suelo=>{
+  const datos=cmpData.filter(d=>d.sueloTipo===suelo&&Number.isFinite(valor(d)));
+  const bins=Array.from({length:6},()=>({}));
+  for(const d of datos){
+   const bin=bins[Math.min(5,Math.floor(valor(d)/paso))];
+   bin[d.tratamiento]=(bin[d.tratamiento]||0)+1;
+  }
+  return {suelo,bins,n:datos.length};
+ }).filter(g=>g.n);
+ const total=bin=>Object.values(bin).reduce((a,b)=>a+b,0);
+ const max=Math.max(1,...grupos.flatMap(g=>g.bins.map(total)));
+ cmp("cmpDistribucion").innerHTML='<p class="hint">'+nombre+' · '+unidad+' · macetas por intervalo. Los colores indican tratamientos.</p>'+grupos.map(g=>{
+  const barras=g.bins.map((bin,i)=>{
+   const detalle=Object.entries(bin).map(([tr,n])=>tr+' '+n).join(' · ');
+   const segmentos=Object.entries(bin).map(([tr,n])=>'<b style="width:'+n/max*100+'%;background:'+palette[tr]+'"></b>').join("");
+   return '<div aria-label="'+detalle+'" title="'+detalle+'"><span>'+cnum(i*paso)+'–'+cnum((i+1)*paso)+'</span><i>'+segmentos+'</i><strong>'+total(bin)+'</strong></div>';
+  }).join("");
+  return '<h3>Suelo '+g.suelo.toLowerCase()+'</h3><div class="histograma">'+barras+'</div>';
+ }).join("");
 }
 function mapaComparador(){
  const key=cmp("cmpMetric").value,units=key==="area"?" cm²":" cm",vals=cmpData.map(d=>d[key]).filter(Number.isFinite);
@@ -155,7 +211,8 @@ for(const side of ["A","B"])cmp("cmp"+side).onchange=mostrarComparacion;
 cmp("cmpOrder").onchange=ordenarComparador;
 cmp("cmpUse").onclick=()=>seleccionarComparada(cmp("cmpRank").value);
 cmp("cmpMetric").onchange=mapaComparador;
-for(const id of ["cmpMaps","cmpPlot"]){
+cmp("cmpX").onchange=graficoComparador;
+for(const id of ["cmpMaps","cmpPlot","cmpNormalPlot"]){
  cmp(id).onclick=e=>{const el=e.target.closest("[data-id]");if(el)seleccionarComparada(el.dataset.id)};
 }
-cmp("cmpPlot").onkeydown=e=>{if(e.key==="Enter"||e.key===" "){e.preventDefault();e.target.dispatchEvent(new MouseEvent("click",{bubbles:true}))}};
+for(const id of ["cmpPlot","cmpNormalPlot"])cmp(id).onkeydown=e=>{if(e.key==="Enter"||e.key===" "){e.preventDefault();e.target.dispatchEvent(new MouseEvent("click",{bubbles:true}))}};

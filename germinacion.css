@@ -1,0 +1,109 @@
+.ensayo-germinacion{max-width:1320px;margin:auto}
+.ensayo-germinacion>h2{margin:8px 0 10px}
+.germ-diseno{display:grid;grid-template-columns:repeat(auto-fit,minmax(185px,1fr));gap:8px;margin:20px 0}
+.germ-diseno>div,.germ-panel{background:#fff;border:1px solid #cbd5c8;border-radius:10px;padding:clamp(10px,2vw,20px)}
+.germ-panel{margin:14px 0}
+.germ-tabs{display:flex;gap:5px;overflow-x:auto;margin:14px 0 0;padding:6px;background:#e9eee4;border:1px solid #d2ddd1;border-radius:9px 9px 0 0}
+.germ-tabs button{flex:1 0 auto;padding:8px 14px;border:1px solid transparent;border-radius:6px;background:transparent;color:#24483a;font:600 .9rem "Segoe UI",Arial,sans-serif;cursor:pointer}
+.germ-tabs button:hover,.germ-tabs button:focus-visible{border-color:#9cb19d;outline:2px solid #9cb19d;outline-offset:1px}
+.germ-tabs button[aria-selected="true"]{background:#235342;color:#fff;border-color:#235342}
+.germ-tabs+.germ-panel{margin-top:0;border-top-left-radius:0;border-top-right-radius:0;scroll-margin-top:12px}
+.germ-panel h3{margin:0;color:#204a3a;font:400 clamp(22px,2.6vw,32px) Georgia,serif}
+.germ-barra,.germ-filtros{display:flex;flex-wrap:wrap;align-items:center;gap:8px 18px}
+.germ-barra{justify-content:space-between}
+.germ-filtros{margin:12px 0}
+.germ-panel label{display:grid;gap:3px;font-weight:650;font-size:.85rem;max-width:100%}
+.germ-panel select{max-width:100%;padding:6px;border:1px solid #a9bfae;border-radius:5px;background:white;color:inherit;font:inherit}
+.germ-columnas{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}
+.germ-grupo,.germ-bandeja{min-width:0;padding:12px;border-radius:8px;background:#f3f7f1}
+.germ-grupo h4,.germ-bandeja h4{margin:0 0 8px;font-size:1.06rem}
+.germ-resultado{display:grid;width:100%;grid-template-columns:1fr auto;align-items:center;gap:3px 8px;margin:5px 0;padding:7px;border:1px solid #d5e1d6;border-radius:5px;background:#fff;color:inherit;text-align:left;font:inherit;font-size:.84rem;cursor:pointer}
+.germ-resultado:hover,.germ-resultado:focus-visible{border-color:#2c7357;outline:1px solid #2c7357}
+.germ-resultado i{display:block;grid-column:1/-1;background:#e6eee7}
+.germ-resultado b{display:block;height:8px}
+.germ-resultado small{grid-column:1/-1;font-weight:400;text-transform:none;letter-spacing:0}
+.germ-bandeja img{display:block;width:100%;height:clamp(175px,35vw,375px);object-fit:contain;background:#e8ede7;border-radius:5px}
+.germ-valores{display:grid;grid-template-columns:repeat(auto-fit,minmax(120px,1fr));gap:6px 12px;margin:10px 0 0}
+.germ-valores dt{font-size:.7rem}.germ-valores dd{font-variant-numeric:tabular-nums}
+@media(max-width:650px){.germ-columnas{grid-template-columns:1fr}.germ-panel label{min-width:0}}
+
+/* Cabecera y comparador científico del ensayo de germinación */
+.germ-titlebar{margin:0 0 18px;padding:clamp(16px,2.6vw,27px);border-radius:10px;background:linear-gradient(115deg,#173e33,#285944);color:#f5f8f3;box-shadow:0 8px 22px #163e331c}
+.germ-titlebar .eyebrow{margin:0 0 7px;color:#c7d9c9}
+.germ-titlebar h2{margin:0 0 8px;color:#fff;font:400 clamp(28px,3.6vw,44px)/1.1 Georgia,serif;letter-spacing:-.025em}
+.germ-titlebar .intro{max-width:76ch;margin:0;color:#e2ece3;font-size:clamp(.92rem,1.35vw,1.05rem)}
+.germ-chart-actions{display:flex;align-items:end;justify-content:flex-end;gap:8px;flex-wrap:wrap}
+.germ-chart-actions button{padding:9px 13px;border:1px solid #285944;border-radius:6px;background:#235342;color:white;font:600 .88rem "Segoe UI",Arial,sans-serif;cursor:pointer}
+.germ-chart-actions button:hover,.germ-chart-actions button:focus-visible{background:#173e33;outline:2px solid #9bb99e;outline-offset:2px}
+.germ-chart-actions output{flex-basis:100%;min-height:1em;text-align:right;font-size:.76rem;color:#496554}
+.germ-chart{overflow:auto;margin:12px 0 18px;border:1px solid #d7e0d8;border-radius:8px;background:#fff}
+.germ-chart svg{display:block;width:100%;min-width:700px;height:auto;font-family:"Segoe UI",Arial,sans-serif}
+.germ-chart .chartTitle{fill:#214735;font-size:25px;font-weight:650}
+.germ-chart .grid{stroke:#e3e9e4;stroke-width:1}
+.germ-chart .axis{stroke:#617267;stroke-width:1.6}
+.germ-chart .tick{fill:#52645a;font-size:18px}
+.germ-chart .category{fill:#314a3c;font-size:20px;font-weight:600}
+.germ-chart .value{fill:#263c30;font-size:16px;font-weight:650}
+.germ-chart .error{stroke:#293c31;stroke-width:2}
+.germ-chart .legendText{fill:#3d5346;font-size:17px}
+.germ-chart .note{fill:#68776d;font-size:16px}
+.germ-chart .chartBar{cursor:pointer}
+.germ-chart .chartBar:focus rect{stroke:#111d16;stroke-width:4;fill-opacity:1}
+.germ-subtitle{margin:8px 0;color:#294b3c;font-size:1rem}
+@media(max-width:650px){.germ-barra{align-items:stretch}.germ-chart-actions{justify-content:flex-start}.germ-chart-actions output{text-align:left}.germ-titlebar{padding:16px}}
+/* Vista de germinación en pantalla completa: cada solapa ocupa el área útil. */
+.germ-titlebar{display:flex;align-items:center;justify-content:space-between;gap:14px}
+.germ-title-actions{display:flex;flex:none;align-items:center;gap:8px}
+.germ-titlebar button{padding:8px 12px;border:1px solid #bed0bf;border-radius:6px;background:#f6faf4;color:#204a3a;font-weight:650}
+.germ-home{display:inline-block;margin:0 0 5px;color:#e2ece3;font-weight:600;text-decoration:none}
+.germ-home:hover,.germ-home:focus-visible{color:#fff;text-decoration:underline;outline:2px solid #c6ddc8;outline-offset:2px}
+.germ-titlebar button:hover,.germ-titlebar button:focus-visible{background:#dce9dc;outline:2px solid #c6ddc8;outline-offset:2px}
+#germResults,#germMeans,#germBandejas,#germDesign,#germMetodo{min-height:0}
+#germinacion:fullscreen,#germinacion.germ-full-window{position:fixed;inset:0;z-index:3000;width:100vw;height:100vh;height:100dvh;max-width:none;margin:0!important;padding:8px!important;display:grid;grid-template-rows:auto auto minmax(0,1fr);gap:6px;overflow:hidden;background:#f2f3ed}
+#germinacion:fullscreen>.back,#germinacion.germ-full-window>.back{display:none}
+#germinacion:fullscreen .germ-titlebar,#germinacion.germ-full-window .germ-titlebar{min-height:0;margin:0;padding:8px 14px}
+#germinacion:fullscreen .germ-titlebar .eyebrow,#germinacion.germ-full-window .germ-titlebar .eyebrow{margin:0;font-size:.65rem}
+#germinacion:fullscreen .germ-titlebar h2,#germinacion.germ-full-window .germ-titlebar h2{font-size:clamp(20px,2.2vw,30px);margin:0}
+#germinacion:fullscreen .germ-titlebar .intro,#germinacion.germ-full-window .germ-titlebar .intro{font-size:.82rem;line-height:1.25}
+#germinacion:fullscreen .germ-titlebar button,#germinacion.germ-full-window .germ-titlebar button{padding:5px 9px;font-size:.78rem}
+#germinacion:fullscreen .germ-tabs,#germinacion.germ-full-window .germ-tabs{min-height:0;margin:0;padding:3px;gap:3px;flex-wrap:nowrap}
+#germinacion:fullscreen .germ-tabs button,#germinacion.germ-full-window .germ-tabs button{padding:6px 10px;font-size:.78rem}
+#germinacion:fullscreen>.germ-panel,#germinacion.germ-full-window>.germ-panel{min-height:0;height:100%;margin:0;padding:10px 14px;overflow:hidden}
+#germinacion:fullscreen #germResults,#germinacion.germ-full-window #germResults{display:flex;flex-direction:column}
+#germinacion:fullscreen #germResults[hidden],#germinacion.germ-full-window #germResults[hidden],#germinacion:fullscreen #germMeans[hidden],#germinacion.germ-full-window #germMeans[hidden],#germinacion:fullscreen #germBandejas[hidden],#germinacion.germ-full-window #germBandejas[hidden],#germinacion:fullscreen #germDesign[hidden],#germinacion.germ-full-window #germDesign[hidden],#germinacion:fullscreen #germMetodo[hidden],#germinacion.germ-full-window #germMetodo[hidden]{display:none!important}
+#germinacion:fullscreen #germResults .germ-barra,#germinacion.germ-full-window #germResults .germ-barra{flex:none;align-items:center;margin-bottom:2px}
+#germinacion:fullscreen #germResults .germ-barra h3,#germinacion.germ-full-window #germResults .germ-barra h3{font-size:1.25rem}
+#germinacion:fullscreen #germResults .germ-barra .source,#germinacion.germ-full-window #germResults .germ-barra .source{margin:1px 0;font-size:.76rem}
+#germinacion:fullscreen #germCriterio,#germinacion.germ-full-window #germCriterio{flex:none;margin:3px 0;font-size:.76rem}
+#germinacion:fullscreen .germ-chart,#germinacion.germ-full-window .germ-chart{flex:1;min-height:0;margin:4px 0;display:flex;align-items:center;justify-content:center;overflow:hidden}
+#germinacion:fullscreen .germ-chart svg,#germinacion.germ-full-window .germ-chart svg{height:100%;width:auto;max-width:100%;min-width:0}
+#germinacion:fullscreen .germ-chart-actions,#germinacion.germ-full-window .germ-chart-actions{gap:6px}
+#germinacion:fullscreen .germ-chart-actions output,#germinacion.germ-full-window .germ-chart-actions output{font-size:.66rem}
+#germinacion:fullscreen #germBandejas,#germinacion.germ-full-window #germBandejas{display:flex;flex-direction:column}
+#germinacion:fullscreen #germBandejas[hidden],#germinacion.germ-full-window #germBandejas[hidden]{display:none!important}
+#germinacion:fullscreen #germBandejas .germ-barra,#germinacion.germ-full-window #germBandejas .germ-barra{flex:none}
+#germinacion:fullscreen #germBandejas .germ-filtros,#germinacion.germ-full-window #germBandejas .germ-filtros{flex:none;margin:5px 0}
+#germinacion:fullscreen #germFotos,#germinacion.germ-full-window #germFotos{flex:1;min-height:0;grid-template-columns:minmax(0,1fr)}
+#germinacion:fullscreen #germFotos .germ-bandeja,#germinacion.germ-full-window #germFotos .germ-bandeja{display:grid;grid-template-columns:minmax(180px,.8fr) minmax(0,1.2fr);grid-template-rows:auto 1fr;gap:6px 14px;align-content:start;min-height:0}
+#germinacion:fullscreen #germFotos .germ-bandeja h4,#germinacion.germ-full-window #germFotos .germ-bandeja h4{grid-column:1/-1;margin:0}
+#germinacion:fullscreen #germFotos .germ-bandeja>a,#germinacion.germ-full-window #germFotos .germ-bandeja>a{grid-row:2}
+#germinacion:fullscreen #germFotos .germ-bandeja img,#germinacion.germ-full-window #germFotos .germ-bandeja img{height:min(55dvh,450px)}
+#germinacion:fullscreen #germFotos .germ-valores,#germinacion.germ-full-window #germFotos .germ-valores{align-content:start;grid-template-columns:repeat(2,minmax(0,1fr));margin:0}
+#germinacion:fullscreen #germDesign .germ-diseno,#germinacion.germ-full-window #germDesign .germ-diseno{grid-template-columns:repeat(2,minmax(0,1fr));margin:12px 0}
+#germinacion:fullscreen #germMetodo p,#germinacion.germ-full-window #germMetodo p{margin:.45em 0;font-size:.88rem;line-height:1.35}
+body:has(#germinacion.germ-full-window){overflow:hidden}
+@media(max-width:700px){#germinacion:fullscreen,#germinacion.germ-full-window{padding:4px!important;gap:4px}#germinacion:fullscreen .germ-titlebar,#germinacion.germ-full-window .germ-titlebar{padding:5px 8px}#germinacion:fullscreen .germ-titlebar .intro,#germinacion.germ-full-window .germ-titlebar .intro{display:none}#germinacion:fullscreen .germ-title-actions,#germinacion.germ-full-window .germ-title-actions{gap:4px}#germinacion:fullscreen .germ-titlebar button,#germinacion.germ-full-window .germ-titlebar button{padding:5px 7px;font-size:.75rem}#germinacion:fullscreen .germ-panel,#germinacion.germ-full-window .germ-panel{padding:6px}#germinacion:fullscreen #germFotos .germ-bandeja,#germinacion.germ-full-window #germFotos .germ-bandeja{grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:5px}#germinacion:fullscreen #germFotos .germ-bandeja img,#germinacion.germ-full-window #germFotos .germ-bandeja img{height:42dvh}#germinacion:fullscreen #germFotos .germ-valores,#germinacion.germ-full-window #germFotos .germ-valores{grid-template-columns:1fr}}
+/* Ajuste de densidad: las solapas aprovechan el área útil sin scroll vertical. */
+#germinacion:fullscreen #germMeans,#germinacion.germ-full-window #germMeans{display:flex;flex-direction:column}
+#germinacion:fullscreen #germMeans[hidden],#germinacion.germ-full-window #germMeans[hidden]{display:none!important}
+#germinacion:fullscreen #germMeans>h3,#germinacion.germ-full-window #germMeans>h3{font-size:1.2rem}
+#germinacion:fullscreen #germMeans>.source,#germinacion.germ-full-window #germMeans>.source{margin:3px 0;font-size:.72rem}
+#germinacion:fullscreen #germGraficos,#germinacion.germ-full-window #germGraficos{flex:1;min-height:0;grid-template-columns:repeat(4,minmax(0,1fr));gap:7px;overflow:hidden}
+#germinacion:fullscreen .germ-grupo,#germinacion.germ-full-window .germ-grupo{padding:7px;overflow:hidden}
+#germinacion:fullscreen .germ-grupo h4,#germinacion.germ-full-window .germ-grupo h4{font-size:.82rem;margin-bottom:3px}
+#germinacion:fullscreen .germ-grupo .source,#germinacion.germ-full-window .germ-grupo .source{margin:2px 0;font-size:.65rem}
+#germinacion:fullscreen .germ-resultado,#germinacion.germ-full-window .germ-resultado{gap:2px 4px;margin:3px 0;padding:4px;font-size:.68rem}
+#germinacion:fullscreen .germ-resultado b,#germinacion.germ-full-window .germ-resultado b{height:5px}
+#germinacion:fullscreen .germ-resultado small,#germinacion.germ-full-window .germ-resultado small{font-size:.62rem}
+#germinacion:fullscreen #germDesign,#germinacion.germ-full-window #germDesign,#germinacion:fullscreen #germMetodo,#germinacion.germ-full-window #germMetodo{overflow:auto}
+@media(max-width:700px){#germinacion:fullscreen #germGraficos,#germinacion.germ-full-window #germGraficos{grid-template-columns:repeat(2,minmax(0,1fr));overflow:auto}}

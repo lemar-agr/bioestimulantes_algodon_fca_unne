@@ -18,4 +18,37 @@
 .cmpGrid button{padding:5px 0;font-size:clamp(9px,1.15vw,14px);min-width:0;border:0}
 #cmpScale{align-self:center;font-size:.86rem}
 #cmpStatus{display:block}
+#cmpNormalPlot{margin:18px 0 8px}
+.curve-title{margin:18px 0 4px;color:#254d3a}
+.normal-soil{margin:12px 0;padding:12px;background:#f7f9f6;border:1px solid #d5e2db;border-radius:9px;overflow:hidden}
+.normal-soil h4{margin:0 0 5px;color:#385849;font-size:14px;text-transform:capitalize}
+.normal-chart{display:block;width:100%;height:auto;overflow:visible;color:#53685e;font:11px 'Segoe UI',Arial,sans-serif}
+.normal-chart .gridline{stroke:#dce5de;stroke-width:1}
+.normal-chart .axisline{stroke:#82958a;stroke-width:1.2}
+.normal-chart circle{cursor:pointer;transition:r .12s ease,opacity .12s ease}
+.normal-chart circle:hover,.normal-chart circle:focus{r:6;stroke:#173e33;stroke-width:2;outline:none}
+.curve-summaries{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,330px),1fr));gap:5px 12px;margin-top:6px}
+.curve-summary{font-size:12px;color:#42574c;line-height:1.5}
+.curve-summary .dot{margin-right:4px}
+.height-soil{margin:12px 0;padding:10px 12px;background:#f7f9f6;border:1px solid #d5e2db;border-radius:9px;overflow:hidden}
+.height-soil h4{margin:0 0 5px;color:#385849;font-size:14px;text-transform:capitalize}
+.height-treatment{margin:8px 0;background:#fff;border:1px solid #e0e7df;border-radius:8px;overflow:hidden}
+.height-treatment>header{display:flex;flex-wrap:wrap;align-items:center;gap:5px 14px;padding:8px 10px;font-size:12px;color:#53685e}
+.height-treatment>header strong{color:var(--treatment);font-size:14px}
+.height-scroll{overflow-x:auto;background:linear-gradient(#fff,#f9fbf8)}
+.height-profile,.means-profile{display:block;width:100%;height:auto;font:12px 'Segoe UI',Arial,sans-serif}
+.height-grid{stroke:#dce5de;stroke-width:1}.height-axis{stroke:#809388;stroke-width:1.2;fill:none}
+.height-tick,.plant-id,.height-axis-label,.height-axis-title{fill:#53685e}
+.height-plant{cursor:pointer}.height-plant:hover,.height-plant:focus{filter:drop-shadow(0 0 2px #284d3a);outline:none}
+.mean-halo{fill:none;stroke:#d99824;stroke-width:2.7}.height-treatment .representative{color:#795719;font-weight:650}.height-treatment .extremes{font-size:11px}
+.height-treatment header button,.means-soil header button{margin-left:auto;padding:5px 9px;font-size:12px;white-space:nowrap}
+.means-title{margin-top:22px}.means-soil{margin:12px 0;padding:10px 12px;background:#f7f9f6;border:1px solid #d5e2db;border-radius:9px}
+.means-soil>header{display:flex;align-items:center;gap:10px}.means-soil h4{margin:0;color:#385849;text-transform:capitalize}
+.mean-chart-wrap{overflow:hidden}.mean-value,.means-treatment{font-size:12px;font-weight:650}.means-n{font-size:11px}.means-reps{display:flex;flex-wrap:wrap;gap:4px 12px;margin:5px 0;color:#53685e;font-size:11px}
 @media(max-width:700px){#cmpCards{grid-template-columns:1fr}.cmpPhotos img,.cmpPhotos canvas{height:155px}.cmpGrid{grid-template-columns:12px repeat(10,minmax(0,1fr))}}
+
+#cmpBars{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,260px),1fr));gap:12px;margin:12px 0}
+#cmpBars section{background:#f5f8f6;padding:12px;border:1px solid #d2ded5;border-radius:8px}
+.mediaBar{display:grid;grid-template-columns:6.3em minmax(25px,1fr) 4.6em;align-items:center;gap:5px;margin:6px 0;font-size:.83rem}
+.mediaBar i{display:block;background:#e5ebe7}.mediaBar b{display:block;height:12px}.mediaBar strong{text-align:right;font-variant-numeric:tabular-nums}
+#cmpMeans caption{text-align:left;font-weight:650;margin:12px 0 4px}#cmpPlot{max-height:none}#cmpPlot svg{width:100%;max-height:335px}

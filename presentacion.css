@@ -1,0 +1,55 @@
+.presentacion{max-width:1320px;margin:auto;padding:clamp(12px,2.4vw,32px)}
+.filmina{display:grid;align-items:center;min-height:min(600px,72svh);padding:clamp(18px,4vw,56px);background:#fff;border:1px solid #cbd5c8;border-radius:12px}
+.filmina h1{font-size:clamp(29px,3.5vw,52px);margin:12px 0 24px}
+.filmina h2{font-size:clamp(29px,3.5vw,52px);margin:10px 0 22px}
+.filmina h3{margin:0 0 7px}.filmina p{max-width:62ch}.filmina a{color:#245941;font-weight:650}.filmina .nota{color:#50665b;font-size:.9rem;margin-top:19px}
+.con-foto{grid-template-columns:1.15fr minmax(0,1fr);gap:clamp(12px,4vw,50px)}
+.filmina figure{margin:0}.filmina img{display:block;width:100%;max-height:52vh;object-fit:contain;border-radius:6px}
+.filmina figcaption{font-size:.85rem;color:#456353;margin-top:8px}
+.par-fotos{display:grid;grid-template-columns:38% 62%;align-items:center}
+.columnas,.graficos{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}
+.columnas>section,.grupo{padding:clamp(9px,1.4vw,18px);background:#f2f6ef;border:1px solid #d4dfd5;border-radius:8px}
+.barra{display:grid;grid-template-columns:6.2em minmax(1ch,1fr) 4.8em;gap:6px;align-items:center;margin:7px 0;font-size:.82rem;font-variant-numeric:tabular-nums}
+.barra i{background:#e1e8df}.barra b{display:block;height:10px}.barra strong{text-align:right}
+.mediciones .graficos{grid-template-columns:1fr;gap:8px}
+@media(max-width:740px){.con-foto,.columnas,.graficos{grid-template-columns:1fr}.filmina img{max-height:28vh}.filmina{min-height:58svh}}
+
+#filminas{display:grid;gap:16px}
+.filmina{min-height:0;scroll-margin-top:16px}
+.filmina figure img{height:clamp(155px,27vw,365px)}
+.filmina .par-fotos img{height:clamp(120px,20vw,300px)}
+.entradas-ensayos{display:flex;flex-wrap:wrap;gap:8px;margin-top:18px}
+.entradas-ensayos a{padding:9px 13px;border:1px solid #a8baab;border-radius:6px;text-decoration:none}
+.entradas-ensayos a:hover,.entradas-ensayos a:focus-visible{background:#235342;color:white}
+@media(max-width:740px){.filmina figure img,.filmina .par-fotos img{height:clamp(120px,36vw,240px)}}
+
+#filminas{display:block}
+.filmina{min-height:min(620px,68svh);padding:clamp(15px,3vw,42px)}
+.barra-presentacion{position:sticky;bottom:0;z-index:2;display:flex;align-items:center;justify-content:space-between;gap:6px 14px;flex-wrap:wrap;padding:8px 0;background:#f5f5ee}
+.barra-presentacion .entradas-ensayos{margin:0}
+.paginador{display:flex;align-items:center;gap:5px;margin-inline-start:auto}
+.paginador button,.barra-presentacion a{min-height:38px;padding:6px 9px;border:1px solid #a8baab;border-radius:6px;background:white;color:#235342;font:inherit;font-size:.83rem;text-decoration:none;cursor:pointer}
+.paginador button:disabled{opacity:.5;cursor:default}
+.paginador output{min-width:3.4em;text-align:center;font-variant-numeric:tabular-nums;font-size:.84rem}
+.barra-presentacion a:focus-visible,.paginador button:focus-visible{outline:2px solid #235342;outline-offset:2px}
+.paginador button:enabled:hover,.barra-presentacion a:hover{background:#235342;color:#fff}
+@media(max-width:650px){.barra-presentacion{justify-content:center}.barra-presentacion .entradas-ensayos{justify-content:center;gap:5px}.paginador{margin-inline-start:0}.filmina h2{font-size:clamp(24px,7vw,35px)}}
+
+.acceso-presentacion{width:min(92vw,470px);margin:clamp(28px,9vh,100px) auto;padding:clamp(16px,4vw,30px);background:#fff;border:1px solid #cbd5c8;border-radius:12px}
+.acceso-presentacion h1{font-size:clamp(29px,5vw,41px);margin:12px 0 18px}
+.acceso-presentacion label{display:block;margin-bottom:4px;color:#244737;font-weight:650}
+.fila-acceso{display:flex;gap:8px;align-items:stretch}
+.fila-acceso input{min-width:0;flex:1;padding:8px;border:1px solid #a8baab;border-radius:6px;font:inherit}
+.fila-acceso button{padding:8px 12px;border:1px solid #235342;border-radius:6px;background:#235342;color:white;font:inherit;cursor:pointer}
+#errorAcceso{margin:8px 0 0;color:#922d34}
+#presentacion:has(#apertura:not([hidden])){max-width:1660px;padding:0 0 8px;margin:auto}
+#presentacion:has(#apertura:not([hidden])) .barra-presentacion{margin:0 5vw}
+.filmina.apertura-portada{align-items:stretch;background:transparent;border:0;border-radius:0;height:auto;min-height:min(620px,77svh);padding:clamp(10px,2.1svh,24px) 5vw}
+.apertura-portada h1{font-size:clamp(25px,min(3.7vw,5.8svh),59px);margin:0 0 clamp(10px,2svh,24px)}
+.apertura-portada .carrusel-portada{align-self:stretch;min-height:clamp(190px,37svh,360px)}
+.apertura-portada .fotos-portada img{height:100%;max-height:none;border-radius:12px}
+@media(max-width:780px){
+ .filmina.apertura-portada{padding:10px 4vw}
+ .apertura-portada h1{font-size:clamp(21px,6.3vw,36px);margin-bottom:10px}
+ .apertura-portada .carrusel-portada{min-height:clamp(135px,34svh,310px)}
+}

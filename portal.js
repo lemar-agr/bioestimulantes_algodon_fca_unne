@@ -20,7 +20,7 @@ function render(){
 }
 function navigate(){
  const route=location.hash.slice(1),m=/^bloque-([12])$/.exec(route);
- const active=m?"mediciones":["crecimiento","germinacion"].includes(route)?route:"inicio";
+ const active=m?"mediciones":["crecimiento","germinacion","desarrollo"].includes(route)?route:"inicio";
  for(const section of document.querySelectorAll("main>section"))section.hidden=section.id!==active;
  if(m){block=m[1];$("blocktitle").textContent="Crecimiento vegetativo · Bloque "+block;const ds=REGISTROS.filter(d=>d.block===block);
  choices("soil",ds.map(d=>d.soil),"Ambos");choices("trt",ds.map(d=>d.trt),"Todos");filter();
@@ -30,3 +30,4 @@ function navigate(){
 }
 $("soil").onchange=$("trt").onchange=filter;$("plant").onchange=render;
 window.addEventListener("hashchange",navigate);navigate();
+iniciarCarruselPortada($("fotosPortada"));

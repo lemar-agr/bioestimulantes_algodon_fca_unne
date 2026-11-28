@@ -1,6 +1,6 @@
 async function imagenesLamina(id){
  const tipos={hojas:"contornos"};
- if(FOLIAR[id].originalPlanta)tipos.planta=id[0]==="3"?"escena":"planta";
+ if(FOLIAR[id].originalPlanta)tipos.planta="escena";
  const pares=await Promise.all(Object.entries(tipos).map(async ([k,t])=>{
  const im=new Image();im.src=await recurso(id,t);await im.decode();return [k,im];
  }));return Object.fromEntries(pares);
@@ -9,7 +9,8 @@ function dibujarPar(ctx,img,cal,i,x,y,w,h){
  const d=cal.dims[i],s=Math.min(w/cal.width,h/cal.height);
  ctx.drawImage(img,x+(w-d.w*s)/2,y+(h-cal.height*s)/2+(cal.above-d.foot)*s,d.w*s,d.h*s);
 }
-cmp("cmpExport").onclick=async()=>{
+const botonExportarComparacion=document.getElementById("cmpExport");
+if(botonExportarComparacion) botonExportarComparacion.onclick=async()=>{
  const btn=cmp("cmpExport"),a=lado("A"),b=lado("B"),grupo=cmp("cmpMode").value!=="id",scope=alcance(),dif=textoDiferencia(a,b),cal=calibracionPar(a,b);
  btn.disabled=true;cmp("cmpStatus").textContent="Preparando la lámina…";
  try{
@@ -45,7 +46,7 @@ cmp("cmpExport").onclick=async()=>{
    }
   }
   texto(dif,64,938,31,true);
-  texto("Leandro Martín Gonzalez  ·  Facultad de Ciencias Agrarias — UNNE",64,1020,28);
+  texto("Gonzalez Leandro Martín  ·  Facultad de Ciencias Agrarias — UNNE",64,1020,28);
   const blob=await new Promise((resolve,reject)=>cv.toBlob(b=>b?resolve(b):reject(new Error("Falló la exportación PNG")),"image/png"));
   const link=document.createElement("a");link.href=URL.createObjectURL(blob);link.download="Algodón - "+a.nombre+" y "+b.nombre+".png";link.click();setTimeout(()=>URL.revokeObjectURL(link.href),30000);
   cmp("cmpStatus").textContent="Lámina PNG generada · 3840 × 2160 px.";

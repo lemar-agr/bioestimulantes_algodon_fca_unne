@@ -1,4 +1,3 @@
-
 "use strict";
 const paquetes={}, solicitudes=new Map(), solicitudesImg=new WeakMap();
 function recurso(id,tipo){

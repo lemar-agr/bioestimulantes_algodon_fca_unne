@@ -9,3 +9,208 @@
 .scene-frame{min-width:0}.orientation-strip{display:flex;align-items:center;gap:8px;justify-content:space-between;padding:3px 8px;background:#f6f8f4;border-bottom:1px solid #d8e1d8}.orientation-strip #compass{display:block;width:54px;height:54px;flex:0 0 54px;margin-left:auto}#greenhouseSigns{display:flex;align-items:center;gap:3px 12px;flex-wrap:wrap;color:#304e42;font-size:12px}#greenhouseSigns span{display:inline-flex;align-items:center;gap:4px}#greenhouseSigns i{display:inline-block;font:600 15px/1 Arial;color:#416a52}
 
 .leaf-panel{padding:0 16px 14px;scroll-margin-top:12px}.leaf-panel>.bar{padding-inline:0}.leaf-nav,.leaf-summary,.leaf-tabs{display:flex;align-items:center;gap:9px;flex-wrap:wrap}.leaf-nav label{display:flex;align-items:center;gap:6px}.leaf-nav select{width:auto;margin:0}.leaf-summary{margin:14px 0;background:#edf3e9;border-radius:8px;padding:12px;justify-content:space-around}.leaf-summary small,.leaf-summary b,.leaf-summary strong{display:block}.leaf-summary small{color:#51675e}.leaf-summary strong{font:26px Georgia,serif}.leaf-pair{display:grid;grid-template-columns:minmax(0,.8fr) minmax(0,1.2fr);gap:10px}.leaf-pair figure{margin:0;border:1px solid #d5dfd4;border-radius:8px;overflow:hidden}.leaf-pair figcaption,.leaf-tabs,.leaf-pair p{padding:8px 10px}.leaf-pair figcaption{font-size:13px;font-weight:650}.leaf-pair a,.leaf-pair img{display:block;width:100%}.leaf-pair img{height:clamp(160px,24vw,340px);object-fit:contain;background:#f5f6f1}.leaf-tabs button{font-size:13px}.leaf-tabs button[aria-pressed=true]{background:#245340;color:white}.leaf-details{padding:9px 0}.leaf-details table{font-size:13px}@media(max-width:520px){.leaf-pair{grid-template-columns:1fr}.leaf-pair img{height:220px}.leaf-summary{justify-content:flex-start}.leaf-summary>div{min-width:75px}}
+
+.ficha-preliminar{margin:18px 0;border-top:2px solid #36614e;padding:14px 0;color:#183d31}.ficha-preliminar h3{font:600 1.25rem Georgia,serif;margin:0 0 12px}
+.ficha-preliminar .variables{display:grid;grid-template-columns:repeat(auto-fit,minmax(145px,1fr));gap:1px;background:#d8e1dd;border:1px solid #d8e1dd}
+.variables>div{padding:11px;background:#f5f8f6}.variables dt{font-size:.8rem}.variables dd{margin:4px 0 0;font:600 1.04rem Consolas,monospace}
+
+#scene{touch-action:none}
+#alternarReferencias{display:none}
+#resumenMesada{display:block;font-size:.88rem;line-height:1.5}
+.mesada-abierta{overflow:hidden}
+.ampliada{position:fixed!important;inset:0;z-index:1000;width:100%;height:100vh;height:100dvh;max-width:none!important;box-sizing:border-box;margin:0!important;padding:6px!important;border:0!important;border-radius:0!important;background:#f6f8f5;display:flex;flex-direction:column;overflow:auto;gap:3px}
+.ampliada>.bar{flex-wrap:wrap;gap:5px;padding:4px}
+.ampliada>.bar h2{margin:0;font-size:1.05rem}
+.ampliada #alternarReferencias{display:inline-block}
+.ampliada .filters,.ampliada #presets{display:flex;flex-wrap:nowrap;overflow-x:auto;gap:6px;flex:none;padding:4px;margin:0}
+.ampliada .filters label,.ampliada #presets button,.ampliada .filters button{flex:none;white-space:nowrap}
+.ampliada .filters label{font-size:.78rem}
+.ampliada .filters select{min-width:4em;padding:4px}
+.ampliada .measurebar{padding:2px 4px}
+.ampliada .scene-layout{display:grid;grid-template-columns:minmax(0,1fr);flex:1;min-height:155px;overflow:hidden}
+.ampliada.con-referencias .scene-layout{grid-template-columns:clamp(150px,21%,270px) minmax(0,1fr)}
+.ampliada:not(.con-referencias) #sunPanel{display:none}
+.ampliada #sunPanel{overflow:auto;min-height:0;border-right:1px solid #ced9d0}
+.ampliada .scene-frame{display:flex;flex-direction:column;min-height:0}
+.ampliada .stage{flex:1;min-height:0;height:auto}
+.ampliada .stage #scene{position:absolute;inset:0;width:100%;height:100%;min-height:0}
+.ampliada #sceneNote{display:none}
+.ampliada #positions{margin:10px 0;overflow:auto}
+@media(max-width:700px),(max-height:550px){.ampliada .bar h2,.ampliada #visible{display:none}.ampliada .orientation-strip{max-height:65px;overflow:auto}.ampliada .tools{font-size:.72rem}.ampliada .tools button{padding:4px 8px}.ampliada .filters{align-items:center}.ampliada.con-referencias .scene-layout{grid-template-columns:minmax(120px,35%) minmax(0,1fr)}.ampliada #sunPanel{padding:6px}.ampliada #sunPanel select{width:100%}}
+#sceneBlocks{display:flex;justify-content:center;gap:7px;padding:3px 6px;background:#eef3ed}
+#sceneBlocks span{border-left:5px solid;padding:2px 8px;background:#fff;color:#203f35;font-weight:650;font-size:.75rem}
+#sceneBlocks:empty{display:none}
+.ampliada{gap:0;padding:3px!important}
+.ampliada>.bar{padding:2px 4px}
+.ampliada .filters,.ampliada #presets{padding:2px 4px;gap:5px}
+.ampliada .filters label{display:flex;flex-direction:column;gap:1px;font-size:.68rem;line-height:1.1}
+.ampliada .filters select{margin:0;padding:3px 5px;font-size:.76rem;max-width:155px}
+.ampliada .filters button,.ampliada #presets button,.ampliada .bar button{padding:3px 7px;font-size:.75rem}
+.ampliada.con-referencias .scene-layout{grid-template-columns:clamp(130px,14%,182px) minmax(0,1fr)}
+.ampliada #sunPanel{padding:6px 8px;font-size:.76rem}
+.ampliada #sunPanel h2,.ampliada #sunPanel h3{font-size:.87rem;margin:6px 0}
+.ampliada #sunPanel label,.ampliada #sunPanel details{margin-top:5px}
+.ampliada #sunPanel .legend{gap:4px 7px;font-size:.72rem}
+.ampliada #resumenMesada{font-size:.75rem;line-height:1.3}
+.ampliada .orientation-strip{padding:1px 5px}
+.ampliada #sceneBlocks{flex:none}
+@media(max-width:700px){.ampliada.con-referencias .scene-layout{grid-template-columns:clamp(108px,29%,145px) minmax(0,1fr)}.ampliada .tools{gap:4px}.ampliada .tools label{font-size:.67rem}}
+
+
+#datosLaterales{min-width:0;display:block;align-self:start}
+.datos-tabs{display:flex;gap:4px;padding:6px;overflow-x:auto}
+.datos-tabs button{flex:1 0 auto;padding:6px;font-size:.8rem}
+.datos-tabs [aria-selected="true"]{background:#244f40;border-color:#244f40;color:white}
+#datosLaterales [role="tabpanel"]{max-height:min(750px,82vh);overflow:auto;margin-top:7px}
+#datosLaterales .leaf-pair,#datosLaterales #cmpCards{grid-template-columns:1fr}
+#datosLaterales select{max-width:100%}
+#perfilVista{padding:9px 12px;border-top:1px solid #cedbd3}
+#perfilVista h3{font-size:.95rem;margin:0 0 6px}
+#perfilVista .scroll{max-height:150px;overflow:auto}
+.ampliada #perfilVista .scroll{max-height:min(135px,20dvh)}
+#perfilVista th{white-space:nowrap}
+.histograma>div{display:grid;grid-template-columns:6em minmax(24px,1fr) 2.5em;align-items:center;gap:6px;font-size:.78rem;margin:4px 0}
+.histograma i{display:flex;background:#e6eee8}.histograma b{display:block;background:#3c785e;height:9px}.histograma strong{text-align:right}
+@media(min-width:1050px){.layout{grid-template-columns:minmax(0,1fr) clamp(330px,32vw,495px)}}
+@media(max-width:1049px){#datosLaterales [role="tabpanel"]{max-height:none}#datosLaterales .leaf-pair{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:550px){.ampliada #perfilVista .scroll{max-height:85px}}
+
+/* Ensayo de crecimiento: solapas compactas para alternar sin barras de página. */
+#growthLayout{display:grid;grid-template-columns:minmax(0,1fr);grid-template-rows:auto minmax(0,1fr);gap:6px;min-width:0}
+.growth-tabs,.compare-tabs{display:flex;align-items:center;gap:4px;overflow-x:auto;padding:4px;background:#e9eee4;border:1px solid #d2ddd1;border-radius:8px}
+.growth-tabs button,.compare-tabs button{flex:1 0 auto;padding:6px 11px;background:transparent;border-color:transparent;color:#24483a;font-size:.82rem}
+.growth-home{flex:none;padding:6px 10px;border-right:1px solid #c8d4c8;color:#315a43;text-decoration:none;font-size:.78rem;font-weight:650}
+.growth-home:hover{color:#173e33;text-decoration:underline}
+.growth-tabs button[aria-selected="true"],.compare-tabs button[aria-selected="true"]{background:#235342;border-color:#235342;color:white}
+.growth-pane{min-width:0}
+.growth-main-layout{display:grid;grid-template-columns:minmax(0,1fr) clamp(290px,31vw,460px);gap:7px;align-items:stretch;min-height:0;height:100%}
+.growth-main-layout>.mesada,.growth-main-layout>#datosLaterales,.growth-design>.solar{min-width:0;margin:0}
+.growth-main-layout>#datosLaterales{align-self:stretch}
+.growth-design{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px;align-items:start}
+.growth-design details{padding:12px}
+.growth-design #blockMap{max-width:100%;overflow:auto}
+#growthContextSun #sunPanel{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:6px 10px;max-width:none;margin:0;padding:8px;background:#f6f8f2;border:0;border-radius:8px;font-size:.76rem}
+#growthContextSun #sunPanel>h2,#growthContextSun #sunPanel>details,#growthContextSun #sunPanel>#sunData{grid-column:1/-1}
+#growthContextSun #sunPanel>label,#growthContextSun #sunPanel>input,#growthContextSun #sunPanel>.timeEnds,#growthContextSun #sunPanel>.buttons{align-self:center}
+#growthContextSun #sunPanel>details{padding:6px 0;border-top:1px solid #d4dcd2}
+.growth-context-design{overflow:auto;padding:8px!important}
+.growth-context-design>.solar{margin:5px 0;padding:8px}
+.growth-context-design .legend{gap:5px 8px;font-size:.72rem}
+#growthLayout:fullscreen,#growthLayout.growth-window{position:fixed;inset:0;z-index:3000;width:100vw;height:100vh;height:100dvh;max-width:none;margin:0;padding:5px;box-sizing:border-box;grid-template-rows:auto minmax(0,1fr);gap:5px;background:#f2f3ed;overflow:hidden}
+#growthLayout:fullscreen .growth-tabs,#growthLayout.growth-window .growth-tabs{padding:2px;gap:3px;min-height:0}
+#growthLayout:fullscreen .growth-tabs button,#growthLayout.growth-window .growth-tabs button{padding:5px 10px;font-size:.76rem}
+#growthLayout:fullscreen .growth-home,#growthLayout.growth-window .growth-home{padding:4px 8px;font-size:.7rem}
+#growthLayout:fullscreen .growth-pane:not([hidden]),#growthLayout.growth-window .growth-pane:not([hidden]){height:100%;min-height:0;overflow:hidden}
+#growthLayout:fullscreen .growth-main-layout,#growthLayout.growth-window .growth-main-layout{grid-template-columns:minmax(0,1fr) clamp(290px,29vw,430px);gap:5px}
+#growthLayout:fullscreen .mesada,#growthLayout.growth-window .mesada{display:flex;flex-direction:column;height:100%;min-height:0;margin:0;overflow:hidden}
+#growthLayout:fullscreen .mesada>.bar,#growthLayout.growth-window .mesada>.bar{flex:none;padding:3px 6px;gap:4px}
+#growthLayout:fullscreen .mesada>.bar h2,#growthLayout.growth-window .mesada>.bar h2{font-size:.9rem}
+#growthLayout:fullscreen .mesada>.bar button,#growthLayout.growth-window .mesada>.bar button{font-size:.68rem;padding:2px 5px}
+#growthLayout:fullscreen .mesada .filters,#growthLayout.growth-window .mesada .filters{display:flex;flex:none;flex-wrap:wrap;overflow:visible;gap:3px;margin:0;padding:3px}
+#growthLayout:fullscreen .mesada .filters label,#growthLayout.growth-window .mesada .filters label{font-size:.61rem;flex:1 1 75px}
+#growthLayout:fullscreen .mesada .filters select,#growthLayout.growth-window .mesada .filters select{font-size:.66rem;padding:2px;margin:1px 0}
+#growthLayout:fullscreen .mesada .controles-vista,#growthLayout.growth-window .mesada .controles-vista{flex:none;padding:2px 4px}
+#growthLayout:fullscreen .mesada .measurebar label,#growthLayout.growth-window .mesada .measurebar label{font-size:.64rem}
+#growthLayout:fullscreen .mesada .measurebar select,#growthLayout.growth-window .mesada .measurebar select{font-size:.66rem;padding:2px}
+#growthLayout:fullscreen .mesada .controles-vista #presets button,#growthLayout.growth-window .mesada .controles-vista #presets button{font-size:.62rem;padding:2px 4px}
+#growthLayout:fullscreen .mesada .scene-layout,#growthLayout.growth-window .mesada .scene-layout{flex:1;min-height:0;grid-template-columns:minmax(0,1fr);overflow:hidden}
+#growthLayout:fullscreen .mesada #sunPanel,#growthLayout.growth-window .mesada #sunPanel{display:none!important}
+#growthLayout:fullscreen .mesada .scene-frame,#growthLayout.growth-window .mesada .scene-frame{display:flex;flex-direction:column;min-height:0;height:100%}
+#growthLayout:fullscreen .mesada .orientation-strip,#growthLayout.growth-window .mesada .orientation-strip{flex:none;padding:1px 4px;height:58px;min-height:58px;max-height:58px;overflow:visible}
+#growthLayout:fullscreen .mesada #greenhouseSigns,#growthLayout.growth-window .mesada #greenhouseSigns{font-size:.62rem;gap:2px 7px}
+#growthLayout:fullscreen .mesada #compass,#growthLayout.growth-window .mesada #compass{display:block;width:56px;height:56px;min-width:56px;min-height:56px;flex:0 0 56px;margin-left:auto}
+#growthLayout:fullscreen .mesada #sceneBlocks,#growthLayout.growth-window .mesada #sceneBlocks{flex:none;padding:1px;gap:3px}
+#growthLayout:fullscreen .mesada #sceneBlocks span,#growthLayout.growth-window .mesada #sceneBlocks span{font-size:.58rem;padding:1px 4px}
+#growthLayout:fullscreen .mesada .stage,#growthLayout.growth-window .mesada .stage{flex:1;min-height:0;height:auto}
+#growthLayout:fullscreen .mesada .stage #scene,#growthLayout.growth-window .mesada .stage #scene{position:absolute;inset:0;width:100%;height:100%;min-height:0}
+#growthLayout:fullscreen .mesada .mapnote,#growthLayout.growth-window .mesada .mapnote{display:none}
+#growthLayout:fullscreen .mesada .tools,#growthLayout.growth-window .mesada .tools{flex:none;padding:2px 4px;gap:4px;font-size:.6rem}
+#growthLayout:fullscreen .mesada .tools button,#growthLayout.growth-window .mesada .tools button{font-size:.6rem;padding:2px 4px}
+#growthLayout:fullscreen #datosLaterales,#growthLayout.growth-window #datosLaterales{display:flex;flex-direction:column;max-height:100%;overflow:hidden}
+#growthLayout:fullscreen #datosLaterales .datos-tabs,#growthLayout.growth-window #datosLaterales .datos-tabs{flex:none;padding:2px;gap:2px}
+#growthLayout:fullscreen #datosLaterales .datos-tabs button,#growthLayout.growth-window #datosLaterales .datos-tabs button{font-size:.64rem;padding:4px 3px}
+#growthLayout:fullscreen #datosLaterales [role="tabpanel"]:not([hidden]),#growthLayout.growth-window #datosLaterales [role="tabpanel"]:not([hidden]){flex:1;min-height:0;max-height:none;overflow:auto;margin:3px 0 0;padding:8px}
+#growthLayout:fullscreen #growthLeaf,#growthLayout.growth-window #growthLeaf,#growthLayout:fullscreen #growthCompare,#growthLayout.growth-window #growthCompare{overflow:auto}
+#growthLayout:fullscreen #growthLeaf .leaf-pair,#growthLayout.growth-window #growthLeaf .leaf-pair{grid-template-columns:repeat(2,minmax(0,1fr))}
+#growthLayout:fullscreen #growthLeaf .leaf-pair img,#growthLayout.growth-window #growthLeaf .leaf-pair img{height:min(48dvh,440px)}
+#growthLayout:fullscreen #growthLeaf .leaf-summary,#growthLayout.growth-window #growthLeaf .leaf-summary{margin:6px 0;padding:7px}
+#growthLayout:fullscreen #growthLeaf .leaf-details,#growthLayout.growth-window #growthLeaf .leaf-details{padding:4px 0}
+#growthLayout:fullscreen #growthCompare,#growthLayout.growth-window #growthCompare{display:flex;flex-direction:column}
+#growthLayout:fullscreen #comparador,#growthLayout.growth-window #comparador{flex:1;min-height:0;margin:0;padding:8px;overflow:auto}
+#growthLayout:fullscreen #comparador>.bar,#growthLayout.growth-window #comparador>.bar{padding:2px 4px}
+#growthLayout:fullscreen #comparador>.leaf-nav,#growthLayout.growth-window #comparador>.leaf-nav{gap:4px;margin:3px 0}
+#growthLayout:fullscreen #comparador>.leaf-nav label,#growthLayout.growth-window #comparador>.leaf-nav label{font-size:.68rem}
+#growthLayout:fullscreen #comparador>.leaf-nav select,#growthLayout.growth-window #comparador>.leaf-nav select{font-size:.72rem;padding:3px;margin:0}
+#growthLayout:fullscreen .compare-tabs,#growthLayout.growth-window .compare-tabs{flex:none;padding:2px}
+#growthLayout:fullscreen .compare-tabs button,#growthLayout.growth-window .compare-tabs button{font-size:.68rem;padding:4px}
+#growthLayout:fullscreen #comparador>details:not([hidden]),#growthLayout.growth-window #comparador>details:not([hidden]){display:block;min-height:0;overflow:auto;padding:7px;margin:3px 0}
+#growthLayout:fullscreen #comparador>details:not([hidden]) .scroll,#growthLayout.growth-window #comparador>details:not([hidden]) .scroll{max-height:40dvh}
+#growthLayout:fullscreen .growth-context-design,#growthLayout.growth-window .growth-context-design{overflow:auto;min-height:0;max-height:100%;padding:5px!important}
+body:has(#growthLayout.growth-window){overflow:hidden}
+@media(max-width:760px){.growth-main-layout{grid-template-columns:1fr}.growth-design{grid-template-columns:1fr}#growthLayout:fullscreen .growth-main-layout,#growthLayout.growth-window .growth-main-layout{grid-template-columns:minmax(0,1fr) minmax(235px,38%)}#growthLayout:fullscreen .mesada .filters,#growthLayout.growth-window .mesada .filters{gap:2px}#growthLayout:fullscreen .mesada .filters label,#growthLayout.growth-window .mesada .filters label{flex-basis:58px}#growthLayout:fullscreen #datosLaterales .datos-tabs button,#growthLayout.growth-window #datosLaterales .datos-tabs button{font-size:.56rem;padding:3px 2px}#growthLayout:fullscreen .mesada .tools label,#growthLayout.growth-window .mesada .tools label{display:none}#growthLayout:fullscreen #growthLeaf .leaf-pair,#growthLayout.growth-window #growthLeaf .leaf-pair{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:520px){#growthLayout:fullscreen .growth-main-layout,#growthLayout.growth-window .growth-main-layout{grid-template-columns:minmax(0,1fr);grid-template-rows:minmax(0,1.15fr) minmax(0,.85fr)}#growthLayout:fullscreen #datosLaterales,#growthLayout.growth-window #datosLaterales{display:flex}}
+
+
+/* Controles de la mesada en la primera pantalla. */
+body>header{padding:9px max(2vw,12px);gap:12px;border-bottom-width:2px}
+body>header h1{font-size:clamp(17px,2vw,26px);margin:0}
+body>header p{font-size:.77rem;margin:2px 0 0}
+main{padding-top:7px}
+.portal-nav{margin-bottom:6px;font-size:.8rem}
+.mesada>.bar:first-child{padding:4px 8px;gap:6px}
+.mesada>.bar:first-child h2{margin:0;font-size:1rem}
+.mesada>.bar:first-child button{padding:3px 7px;font-size:.76rem}
+.mesada:not(.ampliada) .filters{display:flex;align-items:end;gap:5px;margin:0;padding:4px 6px;overflow-x:auto;border-radius:0;border-width:1px 0 0}
+.mesada:not(.ampliada) .filters label{flex:1 0 auto;font-size:.69rem;line-height:1.1}
+.mesada:not(.ampliada) .filters button,.mesada:not(.ampliada) .filters select{padding:3px 5px;min-height:27px;font-size:.75rem}
+.mesada:not(.ampliada) .filters select{margin:2px 0 0}
+.mesada:not(.ampliada) .filters button{white-space:nowrap}
+.mesada .controles-vista{display:flex;align-items:center;gap:4px;padding:3px 5px}
+.mesada .measurebar{padding:0;flex:none}
+.mesada .measurebar label{gap:4px;font-size:.72rem}
+.mesada .measurebar select{font-size:.74rem;padding:3px 5px;max-width:145px}
+.mesada .controles-vista #presets{display:flex;flex-wrap:nowrap;overflow-x:auto;min-width:0;margin:0;padding:1px;gap:3px}
+.mesada .controles-vista #presets button{flex:none;white-space:nowrap;font-size:.73rem;padding:3px 6px}
+.mesada:not(.ampliada) .scene-layout{grid-template-columns:clamp(130px,14vw,172px) minmax(0,1fr)}
+.mesada:not(.ampliada) #sunPanel{padding:6px 8px;font-size:.74rem}
+.mesada #sunPanel h2,.mesada #sunPanel h3{font-size:.86rem;margin:4px 0}
+.mesada #sunPanel label,.mesada #sunPanel details{margin:4px 0 2px;font-size:.72rem}
+.mesada #sunPanel select,.mesada #sunPanel button{font-size:.72rem;padding:3px 5px}
+.mesada #sunPanel .buttons{margin:4px 0}
+.mesada #sunPanel .legend{margin-top:5px;gap:4px}
+.mesada #resumenMesada{font-size:.74rem}
+.mesada:not(.ampliada) .orientation-strip{padding:1px 5px}
+@media(max-width:700px){
+ body>header .block{display:none}
+ .mesada .measurebar label{font-size:0;gap:0}
+ .mesada .measurebar select{max-width:130px}
+ .mesada:not(.ampliada) .scene-layout{grid-template-columns:minmax(0,1fr)}
+ .mesada:not(.ampliada) #sunPanel{display:grid;grid-template-columns:minmax(110px,1fr) minmax(100px,1fr);gap:3px 8px}
+ .mesada:not(.ampliada) #sunPanel h2,.mesada:not(.ampliada) #sunPanel label[for="sunDate"]{grid-column:1;grid-row:1}
+ .mesada:not(.ampliada) #sunPanel label[for="sunDate"]{position:absolute;clip-path:inset(50%);width:1px;height:1px;overflow:hidden}
+ .mesada:not(.ampliada) #sunDate{grid-column:1;grid-row:2;width:100%;min-width:0}
+ .mesada:not(.ampliada) #sunPanel label[for="sunTime"]{grid-column:2;grid-row:1;align-self:center}
+ .mesada:not(.ampliada) #sunTime{grid-column:2;grid-row:2;align-self:center;margin:0}
+ .mesada:not(.ampliada) #sunPanel .timeEnds{grid-column:2;grid-row:3}
+ .mesada:not(.ampliada) #sunPanel .buttons{grid-column:1;grid-row:3;flex-wrap:nowrap}
+ .mesada:not(.ampliada) #sunData{grid-column:1/-1;font-size:.7rem}
+ .mesada:not(.ampliada) #sunPanel .buttons button{white-space:normal}
+}
+
+@media(max-width:700px){
+ .mesada:not(.ampliada) .filters{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:4px}
+ .mesada:not(.ampliada) .filters label{min-width:0}
+ .mesada:not(.ampliada) .filters select{width:100%;min-width:0}
+ .mesada:not(.ampliada) .filters button{grid-column:span 2;justify-self:start}
+ .mesada:not(.ampliada) .stage canvas{height:clamp(245px,41svh,360px);min-height:0}
+}
+@media(max-width:700px){
+ .mesada:not(.ampliada) .orientation-strip{min-height:0;gap:4px}
+ .mesada:not(.ampliada) #greenhouseSigns{gap:1px 7px;font-size:.64rem;line-height:1.1}
+ .mesada:not(.ampliada) #sunPanel .timeEnds{display:none}
+ .mesada:not(.ampliada) #sunPanel #sunData{grid-column:2;grid-row:3;align-self:center;line-height:1.1}
+ .mesada:not(.ampliada) #sunPanel>details{margin:0;line-height:1.1}
+ .mesada:not(.ampliada) .stage canvas{height:var(--alto-vista-inicial,clamp(140px,32svh,360px))}
+}
+.growth-variable-pane{display:flex;flex-direction:column;min-width:0;min-height:0;overflow:hidden}
+.growth-variable-pane iframe{display:block;flex:1;width:100%;height:100%;min-height:0;border:0;background:#f2f5f0}

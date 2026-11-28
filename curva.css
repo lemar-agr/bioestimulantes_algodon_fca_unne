@@ -1,0 +1,101 @@
+/* Variables: panel compacto con pestañas para caber en una sola pantalla */
+html,body{width:100%;height:100%;min-height:0;overflow:hidden}
+body:has(#curveSoilTabs){display:flex;flex-direction:column;min-height:100svh}
+body:has(#curveSoilTabs)>.top{flex:none;padding:10px clamp(16px,3vw,42px);border-bottom:4px solid #adbf89}
+body:has(#curveSoilTabs)>.top h1{font-size:clamp(22px,2.3vw,34px)}
+body:has(#curveSoilTabs)>main{flex:1;min-height:0;width:min(100%,1720px);height:calc(100dvh - 68px);max-width:none;margin:0 auto;padding:8px clamp(10px,1.8vw,24px) 8px;display:grid;grid-template-rows:auto auto auto auto minmax(0,1fr) auto auto;gap:5px;overflow:hidden}
+body:has(#curveSoilTabs)>.top p{font-size:11px}
+body:has(#curveSoilTabs)>main>.intro{max-width:none;margin:0;padding:5px 10px;border-left:3px solid #adbf89;border-radius:0 6px 6px 0;background:#fff;font-size:clamp(11px,.85vw,13px);line-height:1.3}
+body:has(#curveSoilTabs)>main>.curve-toolbar{min-height:0;margin:0;gap:8px}
+body:has(#curveSoilTabs)>main>.curve-toolbar h2{font-size:clamp(18px,1.8vw,25px);margin:0}
+.curve-tabs{display:flex;align-items:center;gap:6px;min-width:0;overflow-x:auto;scrollbar-width:thin}
+.curve-tabs button{flex:0 0 auto;min-height:31px;padding:5px 12px;border:1px solid #cbd8cd;border-radius:6px;background:#fff;color:#315442;font-size:12px;font-weight:650;white-space:nowrap}
+.curve-tabs button[aria-selected="true"]{background:#235342;border-color:#235342;color:#fff;box-shadow:inset 0 -3px #adbf89}
+.curve-tabs button:hover{border-color:#71936f;background:#eef4eb}
+.curve-tabs button[aria-selected="true"]:hover{background:#235342;color:#fff}
+.curve-soil-tabs{padding:3px 0}
+.curve-treatment-tabs{padding:3px 0 5px;border-bottom:1px solid #d5dfd4}
+#charts{min-height:0;overflow:hidden;display:flex;flex-direction:column}
+#charts>.curve-toolbar{flex:none;margin:0 0 4px;gap:7px}
+#charts .curve-title{font-size:clamp(15px,1.35vw,19px)}
+#charts .curve-toolbar .hint{margin:1px 0;font-size:11px}
+#charts .curve-toolbar button{padding:5px 9px}
+#charts .height-soil,#charts .means-soil{flex:1;min-height:0;margin:0 0 4px;overflow:hidden;border-radius:7px}
+#charts .height-soil>h4{padding:5px 10px;font-size:16px}
+#charts .height-treatment{padding:4px 6px}
+#charts .height-treatment header{gap:3px 9px;margin:0 0 3px;font-size:11px}
+#charts .height-treatment header strong{font-size:12px}
+#charts .height-treatment header span{font-size:10px}
+#charts .height-treatment header button{padding:3px 7px}
+#charts .height-scroll,#charts .mean-chart-wrap{min-height:0;overflow:hidden}
+#charts .height-profile,#charts .means-profile{max-height:100%;width:100%;height:auto}
+#charts>.means-title{flex:none;margin:0;padding:4px 0;font-size:17px}
+#charts .means-soil{padding:6px 10px}
+#charts .means-soil header{margin:0 0 2px}
+#charts .means-soil .mean-chart-wrap{max-height:calc(100% - 94px)}
+#charts .means-reps{margin:2px 4px;font-size:10px}
+#charts .mean-plant-key{font-size:10px}
+body:has(#curveSoilTabs)>main>.selected{min-height:0;height:34px;margin:0;padding:6px 10px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;font-size:12px}
+body:has(#curveSoilTabs)>main>footer{padding:2px 0 0;font-size:10px;line-height:1.15}
+@media(max-height:760px){body:has(#curveSoilTabs)>.top{padding-top:6px;padding-bottom:6px}body:has(#curveSoilTabs)>main{height:calc(100dvh - 54px);padding-top:5px;gap:3px}body:has(#curveSoilTabs)>main>.intro{font-size:10px}.curve-tabs button{min-height:27px;padding:3px 9px}#charts .height-treatment header span.extremes{display:none}body:has(#curveSoilTabs)>main>.selected{height:29px;padding:4px 8px}}
+@media(max-width:700px){body:has(#curveSoilTabs)>.top{padding:7px 10px}body:has(#curveSoilTabs)>main{height:calc(100dvh - 48px);padding:5px 7px;grid-template-rows:auto auto auto auto minmax(0,1fr) auto;gap:4px}body:has(#curveSoilTabs)>main>footer{display:none}body:has(#curveSoilTabs)>main>.intro{font-size:10px}.curve-tabs button{font-size:11px;padding:4px 8px}#charts .height-treatment header span.extremes{display:none}#charts .height-treatment header .representative{display:none}#charts .height-profile,#charts .means-profile{width:100%}body:has(#curveSoilTabs)>main>.selected{height:28px}}
+#charts .height-soil{display:flex;flex-direction:column}
+#charts .height-treatment{display:flex;flex:1;flex-direction:column;min-height:0}
+#charts .height-treatment header{flex:none}
+#charts .height-scroll{display:flex;flex:1;align-items:center;justify-content:center;min-height:0}
+#charts .height-profile,#charts .means-profile{max-width:100%;max-height:100%;object-fit:contain}
+#charts .means-soil{display:flex;flex-direction:column}
+#charts .means-soil .mean-chart-wrap{flex:1;display:flex;align-items:center;justify-content:center;min-height:0}
+#curveTreatmentTabs [data-treatment="Aminoácidos"][aria-selected="true"]{background:#2368aa;border-color:#2368aa}
+#curveTreatmentTabs [data-treatment="Hormonal"][aria-selected="true"]{background:#b93840;border-color:#b93840}
+#curveTreatmentTabs [data-treatment="Trichoderma"][aria-selected="true"]{background:#24764e;border-color:#24764e}
+#curveTreatmentTabs [data-treatment="Testigo"][aria-selected="true"]{background:#606c76;border-color:#606c76}
+/* Evita que el diseño compacte el gráfico a cero; siempre deja visible la pestaña activa. */
+.curve-tabs button[aria-selected="true"]{box-shadow:none!important}
+#charts .height-soil[hidden],#charts .means-soil[hidden],#charts .height-treatment[hidden]{display:none!important}
+#charts .height-soil:not([hidden]),#charts .means-soil:not([hidden]){display:flex!important}
+#charts .height-treatment:not([hidden]){display:flex!important}
+#charts .height-soil:not([hidden]){height:100%}
+#charts .height-profile,#charts .means-profile{display:block;width:100%;height:100%;max-width:100%;max-height:100%;object-fit:contain}
+#charts .height-scroll{width:100%}
+#charts .mean-chart-wrap{width:100%}
+/* Vista de curvas: controles compactos y área de gráfico dominante */
+body:has(#curveSoilTabs){height:100dvh;min-height:0}
+body:has(#curveSoilTabs)>.top{min-height:0;padding:5px 16px;gap:8px}
+body:has(#curveSoilTabs)>.top p{display:none}
+body:has(#curveSoilTabs)>.top h1{font-size:clamp(18px,2vw,26px);line-height:1.15}
+body:has(#curveSoilTabs)>main{flex:1;height:auto;min-height:0;padding:4px 12px 5px;grid-template-rows:auto auto auto minmax(0,1fr) auto;gap:2px}
+body:has(#curveSoilTabs)>main>.intro,body:has(#curveSoilTabs)>main>footer{display:none}
+body:has(#curveSoilTabs)>main>.curve-toolbar{min-height:0;padding:1px 0}
+body:has(#curveSoilTabs)>main>.curve-toolbar h2{font-size:16px;line-height:1.15}
+.curve-settings{gap:4px}
+.curve-settings label{font-size:11px}
+.curve-settings select{min-width:180px;padding:4px 7px;margin-top:0;font-size:12px}
+.curve-tabs{min-height:0;gap:4px;padding:1px 0;overflow:visible}
+.curve-tabs button{min-height:25px;padding:3px 9px;font-size:11px}
+.curve-treatment-tabs{border:0!important}
+.curve-tabs button[aria-selected="true"]{box-shadow:none!important}
+#charts{min-height:0;height:100%;overflow:hidden}
+#charts>.curve-toolbar{min-height:0;flex:none;margin:0;padding:2px 3px 4px;align-items:center}
+#charts .curve-title{font-size:14px;line-height:1.15}
+#charts .curve-toolbar .hint{display:none}
+#charts .curve-toolbar button{padding:3px 7px;font-size:10px}
+#charts .height-soil:not([hidden]),#charts .means-soil:not([hidden]){display:flex!important;flex:1;min-height:0;height:auto}
+#charts .height-soil>h4{display:none}
+#charts .height-treatment:not([hidden]){display:flex!important;flex:1;min-height:0;padding:2px 4px}
+#charts .height-treatment header{flex:none;gap:2px 8px;margin:0 0 2px;line-height:1.15}
+#charts .height-treatment header strong{font-size:11px}
+#charts .height-treatment header span{font-size:9px}
+#charts .height-treatment header .representative,#charts .height-treatment header .extremes{display:none}
+#charts .height-treatment header button{margin-left:auto;padding:2px 5px;font-size:9px}
+#charts .height-scroll,#charts .mean-chart-wrap{display:flex;flex:1;min-height:0;width:100%;align-items:stretch;justify-content:stretch;overflow:hidden}
+#charts .height-profile,#charts .means-profile{display:block;width:100%;height:100%;max-width:100%;max-height:100%;object-fit:contain;flex:1}
+#charts>.means-title{flex:none;margin:0;padding:2px 0;font-size:14px}
+#charts .means-soil{padding:3px 6px}
+#charts .means-soil header{flex:none;margin:0 0 2px;font-size:10px}
+#charts .means-soil .mean-chart-wrap{max-height:none}
+#charts .means-reps,#charts .mean-plant-key{display:none}
+body:has(#curveSoilTabs)>main>.selected{height:22px;min-height:0;margin:0;padding:3px 8px;font-size:10px;line-height:1.4}
+@media(max-width:700px){body:has(#curveSoilTabs)>.top{padding:4px 8px}body:has(#curveSoilTabs)>main{padding:3px 5px;grid-template-rows:auto auto auto minmax(0,1fr) auto}body:has(#curveSoilTabs)>main>.curve-toolbar h2{font-size:13px}.curve-settings select{min-width:145px}.curve-tabs{overflow-x:auto;scrollbar-width:none}.curve-tabs button{font-size:10px;padding:3px 7px}#charts .height-treatment header span{font-size:8px}#charts .height-treatment header button{font-size:8px}body:has(#curveSoilTabs)>main>.selected{height:19px;padding:2px 5px}}
+body.embedded:has(#curveSoilTabs)>.top{display:none!important}
+body.embedded:has(#curveSoilTabs)>main{width:100%!important;max-width:none!important;height:100dvh!important;min-height:0;margin:0;padding:3px 8px;flex:1}

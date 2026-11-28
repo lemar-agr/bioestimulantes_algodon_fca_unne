@@ -1,1 +1,103 @@
 *{box-sizing:border-box}[hidden]{display:none!important}body{margin:0;background:#f5f5ee;color:#183c32;font:16px/1.5 "Segoe UI",Arial,sans-serif}header{padding:17px 5vw;background:#193f35;color:#e8eee5;display:flex;align-items:center;justify-content:space-between}header a{color:white;text-decoration:none;font-weight:700;letter-spacing:.06em}header a span{color:#a8bf85}header>span{font-size:14px}main{max-width:1660px;margin:auto}.cover{display:grid;grid-template-columns:1.12fr 1fr;gap:5vw;padding:5vh 5vw;align-items:center;min-height:calc(100svh - 60px)}.eyebrow,dt,small{font-weight:650;font-size:12px;letter-spacing:.06em;text-transform:uppercase;color:#506955}h1,h2,.tiles strong{font-family:Georgia,serif;font-weight:400;letter-spacing:-.04em}h1{font-size:clamp(32px,3.45vw,61px);line-height:1.09;margin:20px 0 28px}h1 i{font-size:.82em;color:#4a6851}h2{font-size:clamp(35px,4vw,58px);line-height:1.1;margin:30px 0 12px}dl{display:flex;gap:15px 30px;flex-wrap:wrap;margin:0}dd{margin:4px 0 0;font-weight:550}.actions{margin-top:28px;display:grid;gap:10px;max-width:430px}.actions a,.tabs a,.tiles a{color:inherit;text-decoration:none}.actions a{padding:13px 17px;border:1px solid #a8baab;border-radius:7px;display:flex;justify-content:space-between;font-weight:600}.actions .primary,.tiles .featured{color:white;background:#235342}.actions a:hover,.tiles a:hover,.tabs a:hover{box-shadow:0 0 0 2px #93ac89}.cover figure{position:relative;margin:0}.cover img{display:block;width:100%;height:min(73vh,770px);object-fit:cover;border-radius:12px}.cover figcaption{position:absolute;bottom:15px;left:15px;font-size:12px;background:#183e35dd;color:white;padding:5px 9px;border-radius:5px}.inside{padding:35px 5vw}.back{color:#38664a}.tiles{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin:30px 0}.tiles a,.method,.filters,.tablewrap{padding:22px;background:#fff;border:1px solid #cbd5c8;border-radius:10px}.tiles a{display:grid;gap:12px}.tiles strong{font-size:42px}.featured small{color:#d0e3c2}.tabs,.filters{display:flex;gap:14px;align-items:center;flex-wrap:wrap}.tabs a{padding:5px 12px;border-radius:5px}.tabs [aria-current=page]{background:#245340;color:white}.filters{margin:18px 0;padding:12px}.filters label{font-size:13px;font-weight:650}.filters select{font:inherit;padding:5px;border:1px solid #bfccbd;border-radius:4px}.filters output{margin-left:auto}.tablewrap{padding:0;overflow:auto;max-height:52vh}table{border-collapse:collapse;width:100%;font-size:14px}td,th{padding:9px 13px;text-align:left;border-bottom:1px solid #dce3d9;white-space:nowrap}th{position:sticky;top:0;background:#e7ede3}td a{color:#255a40}.source{font-size:13px;color:#56685c}.method{margin:25px 0;display:grid;max-width:760px}.intro{max-width:700px}@media(max-width:780px){.cover,.tiles{grid-template-columns:1fr}.cover{gap:22px}.cover img{height:32vh}.tiles{gap:9px}.tiles a{gap:3px}.tiles strong{font-size:30px}header>span{font-size:12px}}
+.desarrollo-plan{max-width:1080px;margin:auto}
+.desarrollo-plan>.eyebrow{margin:22px 0 0}
+.desarrollo-plan>h2{margin:6px 0 12px}
+.desarrollo-plan>.intro{font-size:clamp(18px,2.2vw,24px);color:#244737}
+.desarrollo-plan>.source{max-width:75ch;margin:16px 0 24px}
+.capitulo-plan{background:#fff;border:1px solid #cbd5c8;border-radius:10px;margin:9px 0;overflow:hidden}
+.capitulo-plan>summary{padding:13px 16px;cursor:pointer;font-weight:650;background:#e9eee4}
+.capitulo-plan>summary:focus-visible{outline:2px solid #245340;outline-offset:-3px}
+.capitulo-plan>div{padding:8px clamp(13px,3vw,27px) 18px}
+.capitulo-plan p,.capitulo-plan li{max-width:80ch;overflow-wrap:anywhere}
+.capitulo-plan li+li{margin-top:7px}
+.capitulo-plan a{color:#245a41}
+.capitulo-plan figure{margin:18px 0 22px}
+.capitulo-plan img{display:block;max-width:100%;max-height:640px;height:auto;object-fit:contain}
+.capitulo-plan figcaption{margin-top:5px;font-size:.83rem;color:#526956}
+.tabla-plan{overflow:auto;margin:16px 0}
+.tabla-plan caption{text-align:left;margin-bottom:8px;font-weight:650}
+.tabla-plan td,.tabla-plan th{text-align:center;padding:5px 7px}
+.desarrollo-plan .actions{margin-bottom:12px}
+
+
+.fotos-portada{position:relative;height:min(73vh,770px);overflow:hidden;border-radius:12px;background:#dbe4d8}
+.cover .fotos-portada img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;transition:opacity 1.6s ease-in-out}
+.cover .fotos-portada .foto-activa{opacity:1;z-index:1}
+@media(max-width:780px){.fotos-portada{height:clamp(200px,43vh,410px)}}
+@media(prefers-reduced-motion:reduce){.cover .fotos-portada img{transition:none}}
+
+
+/* Portada ajustada al alto disponible. */
+.encabezado-institucional .logos-tesis{display:grid;width:100%;grid-template-columns:minmax(74px,1fr) minmax(0,auto) minmax(74px,1fr);gap:clamp(6px,2vw,20px);margin:0}
+.encabezado-institucional .logos-tesis a:first-child{justify-self:start}
+.encabezado-institucional .logos-tesis a:last-child{justify-self:end}
+.encabezado-institucional .logos-tesis img{height:clamp(30px,4vw,42px)}
+.encabezado-institucional .nombre-instituciones{font-weight:400;font-size:clamp(.72rem,1.3vw,.96rem);text-align:center}
+body:has(#inicio:not([hidden])){display:grid;height:100svh;grid-template-columns:minmax(0,1fr);grid-template-rows:auto minmax(0,1fr)}
+body:has(#inicio:not([hidden]))>main{width:100%;min-height:0;margin:0 auto}
+.cover{height:100%;min-height:0;grid-template-columns:minmax(0,1.12fr) minmax(0,1fr);gap:clamp(14px,3vw,50px);padding:clamp(10px,2.1svh,24px) 5vw;grid-template-rows:auto;align-content:center;align-items:stretch}
+.cover .eyebrow{margin:0 0 6px}
+.cover h1{font-size:clamp(25px,min(3.7vw,5.8svh),59px);margin:0 0 clamp(10px,2svh,24px);line-height:1.07}
+.cover dl{gap:4px clamp(10px,2vw,24px)}
+.cover dd{margin:1px 0;font-size:clamp(.81rem,1.23vw,.98rem)}
+.cover .actions{max-width:570px;margin-top:clamp(9px,2svh,22px);gap:6px}
+.cover .actions a{padding:7px 10px;font-size:clamp(.78rem,1.2vw,.98rem);gap:6px;align-items:center;line-height:1.25;min-height:36px}
+.cover .carrusel-portada{width:100%;min-height:0}
+.cover .fotos-portada{position:absolute;inset:0;height:auto}
+@media(min-width:980px){.cover .actions{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:780px){
+ .encabezado-institucional{padding:6px 4vw;gap:7px}
+ .encabezado-institucional .nombre-instituciones{max-width:27ch;line-height:1.2;overflow-wrap:anywhere}
+ .encabezado-institucional .logos-tesis{gap:2px}
+ .cover{grid-template-columns:minmax(0,1fr);grid-template-rows:auto minmax(90px,1fr);align-content:stretch;align-items:stretch;gap:10px;padding:10px 4vw}
+ .cover h1{font-size:clamp(21px,6.3vw,36px);margin-bottom:10px}
+ .cover .actions{grid-template-columns:repeat(2,minmax(0,1fr));max-width:none;margin-top:9px}
+ .cover .actions a{padding:5px 7px}
+}
+@media(max-height:460px){
+ .cover h1{font-size:clamp(18px,min(4.1vw,6svh),28px)}
+ .cover .actions a{min-height:30px;padding-block:4px}
+}
+
+
+.cover .actions a{background:#fff;color:#235342}
+.cover .actions a:hover,.cover .actions a:focus-visible{background:#235342;border-color:#235342;color:#fff}
+.cover .actions a:focus-visible{outline:2px solid #235342;outline-offset:2px}
+
+.desarrollo-plan .capitulo-plan>div{padding-top:5px;padding-bottom:12px}
+.desarrollo-plan .capitulo-plan>div>p{max-width:none;margin:.55em 0;text-align:justify;text-indent:1.4em;hyphens:auto;overflow-wrap:break-word}
+.desarrollo-plan .capitulo-plan h3{margin:1em 0 .28em}
+.desarrollo-plan .capitulo-plan ul,.desarrollo-plan .capitulo-plan ol{margin:.6em 0}
+.desarrollo-plan .figuras-plan{display:grid;gap:9px 14px;margin:10px 0 13px;align-items:start}
+.desarrollo-plan .figuras-germinacion{grid-template-columns:repeat(2,minmax(0,1fr))}
+.desarrollo-plan .figuras-crecimiento{grid-template-columns:repeat(3,minmax(0,1fr))}
+.desarrollo-plan .figuras-plan figure{margin:0;min-width:0;text-align:center}
+.desarrollo-plan .figuras-plan a{display:block}
+.desarrollo-plan .figuras-plan img{width:auto;max-width:100%;max-height:365px;margin:auto}
+.desarrollo-plan .figuras-plan figcaption{line-height:1.3;margin-top:3px}
+@media(max-width:620px){
+ .desarrollo-plan .figuras-plan{grid-template-columns:minmax(0,1fr);gap:12px}
+ .desarrollo-plan .capitulo-plan>div>p{text-indent:1em}
+}
+
+
+/* Presentación editorial del desarrollo como manuscrito científico */
+.desarrollo-plan .paper-head{display:block;margin:20px 0 18px;padding:clamp(18px,3vw,34px);background:#fff;color:#183c32;border:1px solid #d8e0d7;border-top:4px solid #235342;border-radius:10px}
+.desarrollo-plan .paper-head .eyebrow{margin:0 0 10px}
+.desarrollo-plan .paper-title{max-width:28ch;margin:0 0 18px;font:400 clamp(30px,4vw,46px)/1.12 Georgia,serif;letter-spacing:-.025em;color:#183c32}
+.desarrollo-plan .paper-authors{display:flex;flex-wrap:wrap;gap:4px 22px;margin:0 0 5px;font-weight:650}
+.desarrollo-plan .paper-authors sup,.desarrollo-plan .paper-affiliation sup{color:#52745c;font-size:.72em}
+.desarrollo-plan .paper-affiliation{margin:0;font-size:.92rem;color:#53665a}
+.desarrollo-plan .paper-abstract{max-width:900px;margin:20px 0;padding:20px clamp(16px,3vw,28px);background:#eef3eb;border-left:3px solid #71936f;border-radius:0 8px 8px 0}
+.desarrollo-plan .paper-abstract h3{margin:0 0 8px;color:#214735;font:650 1.1rem "Segoe UI",Arial,sans-serif}
+.desarrollo-plan .paper-abstract p{max-width:none;margin:.45em 0;text-align:justify;hyphens:auto}
+.desarrollo-plan .paper-abstract .paper-keywords{text-indent:0;font-size:.92rem;color:#40584a}
+.desarrollo-plan .paper-footer{margin:26px 0 0;padding:16px 4px 4px;border-top:1px solid #cbd5c8;color:#52665a;font-size:.84rem}
+.desarrollo-plan .paper-footer p{margin:4px 0}
+.desarrollo-plan .paper-footer strong{color:#235342;letter-spacing:.06em}
+@media(max-width:620px){.desarrollo-plan .paper-head{padding:18px}.desarrollo-plan .paper-title{font-size:30px}.desarrollo-plan .paper-abstract p{text-indent:0}}.desarrollo-plan .paper-download{margin:15px 0 0;text-align:left;text-indent:0}
+.desarrollo-plan .paper-download a{display:inline-flex;align-items:center;gap:8px;padding:9px 14px;border-radius:6px;background:#235342;color:#fff;text-decoration:none;font-size:.9rem;font-weight:650}
+.desarrollo-plan .paper-download a:hover,.desarrollo-plan .paper-download a:focus-visible{background:#183f33;outline:2px solid #71936f;outline-offset:2px}/* Línea de identidad verde claro bajo las cabeceras institucionales */
+.encabezado-institucional,.encabezado-foto{border-bottom:4px solid #adbf89}
+.desarrollo-plan .paper-head{border-top:0;border-bottom:4px solid #adbf89}
+.germ-titlebar{border-bottom:4px solid #adbf89}

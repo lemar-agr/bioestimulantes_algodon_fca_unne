@@ -22,6 +22,7 @@ function pintarGaleriaFoliar(){
  const area=n=>leafNumber.format(n)+" cm²";
  for(const [id,value] of [["leafTotal",d.total],["leafStages",d.etapas],["leafOther",d.otras]])leafUI(id).textContent=area(value);
  leafUI("leafPlantId").textContent=leafId;
+ mostrarPreliminares(leafId);
  const hasPortrait=Boolean(d.originalPlanta),showOutline=!hasPortrait||leafOutlined;
  leafUI("leafLeftCaption").textContent=hasPortrait?"Planta entera":"Foto original de las hojas";
  leafUI("leafMissing").hidden=hasPortrait;
